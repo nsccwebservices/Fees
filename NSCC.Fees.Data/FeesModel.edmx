@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcademicYear">
+          <Key>
+            <PropertyRef Name="AcademicYearID" />
+          </Key>
+          <Property Name="AcademicYearID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeFee">
+          <Key>
+            <PropertyRef Name="CollegeFeeID" />
+          </Key>
+          <Property Name="CollegeFeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcademicYearID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AmountDomestic" Type="int" Nullable="false" />
+          <Property Name="AmountInternational" Type="int" Nullable="false" />
+          <Property Name="IncludeOnCreateProgram" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CostItem">
+          <Key>
+            <PropertyRef Name="CostItemID" />
+          </Key>
+          <Property Name="CostItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LongName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcademicYearID" Type="int" Nullable="false" />
+          <Property Name="SchoolID" Type="int" Nullable="false" />
+          <Property Name="TuitionID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ProgramPageLink" Type="nvarchar" MaxLength="512" />
+          <Property Name="AcadProg" Type="char" MaxLength="5" />
+          <Property Name="AcadPlan" Type="varchar" MaxLength="10" />
+          <Property Name="IsInternationalOffering" Type="bit" />
+          <Property Name="IsPartTime" Type="bit" />
+          <Property Name="NonStandardTuition" Type="int" />
+          <Property Name="FirstTermPayment" Type="int" />
+          <Property Name="CoopTypeID" Type="int" Nullable="false" />
+          <Property Name="AmountCoopDomestic" Type="int" />
+          <Property Name="AmountCoopInternational" Type="int" />
+          <Property Name="AmountTextBooks" Type="int" />
+          <Property Name="AmountSupplies" Type="int" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="NotesInternal" Type="nvarchar" MaxLength="2048" />
+          <Property Name="NotesTuitionCollegeFees" Type="nvarchar" MaxLength="2048" />
+          <Property Name="NotesTextBooks" Type="nvarchar" MaxLength="2048" />
+          <Property Name="NotesProgramCosts" Type="nvarchar" MaxLength="2048" />
+          <Property Name="NotesSchedule" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedByFirstname" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedByLastname" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ProgramCollegeFee">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+            <PropertyRef Name="CollegeFeeID" />
+          </Key>
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="CollegeFeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="Campus" Type="varchar" MaxLength="255" />
+          <Property Name="FirstPaymentDate" Type="datetime" />
+          <Property Name="ProgramEndDate" Type="datetime" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="AcademicYearEndDate" Type="datetime" />
+          <Property Name="HasUPass" Type="bit" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="SchoolID" />
+          </Key>
+          <Property Name="SchoolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LongName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tuition">
+          <Key>
+            <PropertyRef Name="TuitionID" />
+          </Key>
+          <Property Name="TuitionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcademicYearID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AmountDomestic" Type="int" Nullable="false" />
+          <Property Name="AmountInternational" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CollegeFee_AcademicYear">
+          <End Role="AcademicYear" Type="Self.AcademicYear" Multiplicity="1" />
+          <End Role="CollegeFee" Type="Self.CollegeFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicYear">
+              <PropertyRef Name="AcademicYearID" />
+            </Principal>
+            <Dependent Role="CollegeFee">
+              <PropertyRef Name="AcademicYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CostItem_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="CostItem" Type="Self.CostItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="CostItem">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_AcademicYear">
+          <End Role="AcademicYear" Type="Self.AcademicYear" Multiplicity="1" />
+          <End Role="Program" Type="Self.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicYear">
+              <PropertyRef Name="AcademicYearID" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="AcademicYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_School">
+          <End Role="School" Type="Self.School" Multiplicity="1" />
+          <End Role="Program" Type="Self.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_Tuition">
+          <End Role="Tuition" Type="Self.Tuition" Multiplicity="1" />
+          <End Role="Program" Type="Self.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuition">
+              <PropertyRef Name="TuitionID" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="TuitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramCollegeFee_CollegeFee">
+          <End Role="CollegeFee" Type="Self.CollegeFee" Multiplicity="1" />
+          <End Role="ProgramCollegeFee" Type="Self.ProgramCollegeFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollegeFee">
+              <PropertyRef Name="CollegeFeeID" />
+            </Principal>
+            <Dependent Role="ProgramCollegeFee">
+              <PropertyRef Name="CollegeFeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramCollegeFee_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="ProgramCollegeFee" Type="Self.ProgramCollegeFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ProgramCollegeFee">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tuition_AcademicYear">
+          <End Role="AcademicYear" Type="Self.AcademicYear" Multiplicity="1" />
+          <End Role="Tuition" Type="Self.Tuition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicYear">
+              <PropertyRef Name="AcademicYearID" />
+            </Principal>
+            <Dependent Role="Tuition">
+              <PropertyRef Name="AcademicYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FeesModelStoreContainer">
+          <EntitySet Name="AcademicYear" EntityType="Self.AcademicYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollegeFee" EntityType="Self.CollegeFee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CostItem" EntityType="Self.CostItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramCollegeFee" EntityType="Self.ProgramCollegeFee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tuition" EntityType="Self.Tuition" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CollegeFee_AcademicYear" Association="Self.FK_CollegeFee_AcademicYear">
+            <End Role="AcademicYear" EntitySet="AcademicYear" />
+            <End Role="CollegeFee" EntitySet="CollegeFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CostItem_Program" Association="Self.FK_CostItem_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="CostItem" EntitySet="CostItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_AcademicYear" Association="Self.FK_Program_AcademicYear">
+            <End Role="AcademicYear" EntitySet="AcademicYear" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_School" Association="Self.FK_Program_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_Tuition" Association="Self.FK_Program_Tuition">
+            <End Role="Tuition" EntitySet="Tuition" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramCollegeFee_CollegeFee" Association="Self.FK_ProgramCollegeFee_CollegeFee">
+            <End Role="CollegeFee" EntitySet="CollegeFee" />
+            <End Role="ProgramCollegeFee" EntitySet="ProgramCollegeFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramCollegeFee_Program" Association="Self.FK_ProgramCollegeFee_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="ProgramCollegeFee" EntitySet="ProgramCollegeFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Location" Association="Self.FK_Schedule_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Program" Association="Self.FK_Schedule_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tuition_AcademicYear" Association="Self.FK_Tuition_AcademicYear">
+            <End Role="AcademicYear" EntitySet="AcademicYear" />
+            <End Role="Tuition" EntitySet="Tuition" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FeesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FeesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AcademicYears" EntityType="FeesModel.AcademicYear" />
+          <EntitySet Name="CollegeFees" EntityType="FeesModel.CollegeFee" />
+          <EntitySet Name="CostItems" EntityType="FeesModel.CostItem" />
+          <EntitySet Name="Locations" EntityType="FeesModel.Location" />
+          <EntitySet Name="Programs" EntityType="FeesModel.Program" />
+          <EntitySet Name="Schedules" EntityType="FeesModel.Schedule" />
+          <EntitySet Name="Schools" EntityType="FeesModel.School" />
+          <EntitySet Name="Tuitions" EntityType="FeesModel.Tuition" />
+          <AssociationSet Name="FK_CollegeFee_AcademicYear" Association="FeesModel.FK_CollegeFee_AcademicYear">
+            <End Role="AcademicYear" EntitySet="AcademicYears" />
+            <End Role="CollegeFee" EntitySet="CollegeFees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_AcademicYear" Association="FeesModel.FK_Program_AcademicYear">
+            <End Role="AcademicYear" EntitySet="AcademicYears" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tuition_AcademicYear" Association="FeesModel.FK_Tuition_AcademicYear">
+            <End Role="AcademicYear" EntitySet="AcademicYears" />
+            <End Role="Tuition" EntitySet="Tuitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CostItem_Program" Association="FeesModel.FK_CostItem_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="CostItem" EntitySet="CostItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Location" Association="FeesModel.FK_Schedule_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_School" Association="FeesModel.FK_Program_School">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_Tuition" Association="FeesModel.FK_Program_Tuition">
+            <End Role="Tuition" EntitySet="Tuitions" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Program" Association="FeesModel.FK_Schedule_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="ProgramCollegeFee" Association="FeesModel.ProgramCollegeFee">
+            <End Role="CollegeFee" EntitySet="CollegeFees" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AcademicYear">
+          <Key>
+            <PropertyRef Name="AcademicYearID" />
+          </Key>
+          <Property Name="AcademicYearID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CollegeFees" Relationship="FeesModel.FK_CollegeFee_AcademicYear" FromRole="AcademicYear" ToRole="CollegeFee" />
+          <NavigationProperty Name="Programs" Relationship="FeesModel.FK_Program_AcademicYear" FromRole="AcademicYear" ToRole="Program" />
+          <NavigationProperty Name="Tuitions" Relationship="FeesModel.FK_Tuition_AcademicYear" FromRole="AcademicYear" ToRole="Tuition" />
+        </EntityType>
+        <EntityType Name="CollegeFee">
+          <Key>
+            <PropertyRef Name="CollegeFeeID" />
+          </Key>
+          <Property Name="CollegeFeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcademicYearID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AmountDomestic" Type="Int32" Nullable="false" />
+          <Property Name="AmountInternational" Type="Int32" Nullable="false" />
+          <Property Name="IncludeOnCreateProgram" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcademicYear" Relationship="FeesModel.FK_CollegeFee_AcademicYear" FromRole="CollegeFee" ToRole="AcademicYear" />
+          <NavigationProperty Name="Programs" Relationship="FeesModel.ProgramCollegeFee" FromRole="CollegeFee" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="CostItem">
+          <Key>
+            <PropertyRef Name="CostItemID" />
+          </Key>
+          <Property Name="CostItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Program" Relationship="FeesModel.FK_CostItem_Program" FromRole="CostItem" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LongName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Schedules" Relationship="FeesModel.FK_Schedule_Location" FromRole="Location" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcademicYearID" Type="Int32" Nullable="false" />
+          <Property Name="SchoolID" Type="Int32" Nullable="false" />
+          <Property Name="TuitionID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramPageLink" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="AcadProg" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="AcadPlan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsInternationalOffering" Type="Boolean" />
+          <Property Name="IsPartTime" Type="Boolean" />
+          <Property Name="NonStandardTuition" Type="Int32" />
+          <Property Name="FirstTermPayment" Type="Int32" />
+          <Property Name="CoopTypeID" Type="Int32" Nullable="false" />
+          <Property Name="AmountCoopDomestic" Type="Int32" />
+          <Property Name="AmountCoopInternational" Type="Int32" />
+          <Property Name="AmountTextBooks" Type="Int32" />
+          <Property Name="AmountSupplies" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+          <Property Name="NotesInternal" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="NotesTuitionCollegeFees" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="NotesTextBooks" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="NotesProgramCosts" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="NotesSchedule" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedByFirstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedByLastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcademicYear" Relationship="FeesModel.FK_Program_AcademicYear" FromRole="Program" ToRole="AcademicYear" />
+          <NavigationProperty Name="CostItems" Relationship="FeesModel.FK_CostItem_Program" FromRole="Program" ToRole="CostItem" />
+          <NavigationProperty Name="School" Relationship="FeesModel.FK_Program_School" FromRole="Program" ToRole="School" />
+          <NavigationProperty Name="Tuition" Relationship="FeesModel.FK_Program_Tuition" FromRole="Program" ToRole="Tuition" />
+          <NavigationProperty Name="Schedules" Relationship="FeesModel.FK_Schedule_Program" FromRole="Program" ToRole="Schedule" />
+          <NavigationProperty Name="CollegeFees" Relationship="FeesModel.ProgramCollegeFee" FromRole="Program" ToRole="CollegeFee" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Campus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FirstPaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="ProgramEndDate" Type="DateTime" Precision="3" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="AcademicYearEndDate" Type="DateTime" Precision="3" />
+          <Property Name="HasUPass" Type="Boolean" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="FeesModel.FK_Schedule_Location" FromRole="Schedule" ToRole="Location" />
+          <NavigationProperty Name="Program" Relationship="FeesModel.FK_Schedule_Program" FromRole="Schedule" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="SchoolID" />
+          </Key>
+          <Property Name="SchoolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LongName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Programs" Relationship="FeesModel.FK_Program_School" FromRole="School" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Tuition">
+          <Key>
+            <PropertyRef Name="TuitionID" />
+          </Key>
+          <Property Name="TuitionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcademicYearID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AmountDomestic" Type="Int32" Nullable="false" />
+          <Property Name="AmountInternational" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AcademicYear" Relationship="FeesModel.FK_Tuition_AcademicYear" FromRole="Tuition" ToRole="AcademicYear" />
+          <NavigationProperty Name="Programs" Relationship="FeesModel.FK_Program_Tuition" FromRole="Tuition" ToRole="Program" />
+        </EntityType>
+        <Association Name="FK_CollegeFee_AcademicYear">
+          <End Type="FeesModel.AcademicYear" Role="AcademicYear" Multiplicity="1" />
+          <End Type="FeesModel.CollegeFee" Role="CollegeFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicYear">
+              <PropertyRef Name="AcademicYearID" />
+            </Principal>
+            <Dependent Role="CollegeFee">
+              <PropertyRef Name="AcademicYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_AcademicYear">
+          <End Type="FeesModel.AcademicYear" Role="AcademicYear" Multiplicity="1" />
+          <End Type="FeesModel.Program" Role="Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicYear">
+              <PropertyRef Name="AcademicYearID" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="AcademicYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tuition_AcademicYear">
+          <End Type="FeesModel.AcademicYear" Role="AcademicYear" Multiplicity="1" />
+          <End Type="FeesModel.Tuition" Role="Tuition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicYear">
+              <PropertyRef Name="AcademicYearID" />
+            </Principal>
+            <Dependent Role="Tuition">
+              <PropertyRef Name="AcademicYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CostItem_Program">
+          <End Type="FeesModel.Program" Role="Program" Multiplicity="1" />
+          <End Type="FeesModel.CostItem" Role="CostItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="CostItem">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Location">
+          <End Type="FeesModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="FeesModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_School">
+          <End Type="FeesModel.School" Role="School" Multiplicity="1" />
+          <End Type="FeesModel.Program" Role="Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_Tuition">
+          <End Type="FeesModel.Tuition" Role="Tuition" Multiplicity="1" />
+          <End Type="FeesModel.Program" Role="Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuition">
+              <PropertyRef Name="TuitionID" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="TuitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Program">
+          <End Type="FeesModel.Program" Role="Program" Multiplicity="1" />
+          <End Type="FeesModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProgramCollegeFee">
+          <End Type="FeesModel.CollegeFee" Role="CollegeFee" Multiplicity="*" />
+          <End Type="FeesModel.Program" Role="Program" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FeesModelStoreContainer" CdmEntityContainer="FeesEntities">
+          <EntitySetMapping Name="AcademicYears">
+            <EntityTypeMapping TypeName="FeesModel.AcademicYear">
+              <MappingFragment StoreEntitySet="AcademicYear">
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AcademicYearID" ColumnName="AcademicYearID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeFees">
+            <EntityTypeMapping TypeName="FeesModel.CollegeFee">
+              <MappingFragment StoreEntitySet="CollegeFee">
+                <ScalarProperty Name="IncludeOnCreateProgram" ColumnName="IncludeOnCreateProgram" />
+                <ScalarProperty Name="AmountInternational" ColumnName="AmountInternational" />
+                <ScalarProperty Name="AmountDomestic" ColumnName="AmountDomestic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AcademicYearID" ColumnName="AcademicYearID" />
+                <ScalarProperty Name="CollegeFeeID" ColumnName="CollegeFeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CostItems">
+            <EntityTypeMapping TypeName="FeesModel.CostItem">
+              <MappingFragment StoreEntitySet="CostItem">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="CostItemID" ColumnName="CostItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="FeesModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="FeesModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="LastModifiedByLastname" ColumnName="LastModifiedByLastname" />
+                <ScalarProperty Name="LastModifiedByFirstname" ColumnName="LastModifiedByFirstname" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="NotesSchedule" ColumnName="NotesSchedule" />
+                <ScalarProperty Name="NotesProgramCosts" ColumnName="NotesProgramCosts" />
+                <ScalarProperty Name="NotesTextBooks" ColumnName="NotesTextBooks" />
+                <ScalarProperty Name="NotesTuitionCollegeFees" ColumnName="NotesTuitionCollegeFees" />
+                <ScalarProperty Name="NotesInternal" ColumnName="NotesInternal" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="AmountSupplies" ColumnName="AmountSupplies" />
+                <ScalarProperty Name="AmountTextBooks" ColumnName="AmountTextBooks" />
+                <ScalarProperty Name="AmountCoopInternational" ColumnName="AmountCoopInternational" />
+                <ScalarProperty Name="AmountCoopDomestic" ColumnName="AmountCoopDomestic" />
+                <ScalarProperty Name="CoopTypeID" ColumnName="CoopTypeID" />
+                <ScalarProperty Name="FirstTermPayment" ColumnName="FirstTermPayment" />
+                <ScalarProperty Name="NonStandardTuition" ColumnName="NonStandardTuition" />
+                <ScalarProperty Name="IsPartTime" ColumnName="IsPartTime" />
+                <ScalarProperty Name="IsInternationalOffering" ColumnName="IsInternationalOffering" />
+                <ScalarProperty Name="AcadPlan" ColumnName="AcadPlan" />
+                <ScalarProperty Name="AcadProg" ColumnName="AcadProg" />
+                <ScalarProperty Name="ProgramPageLink" ColumnName="ProgramPageLink" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TuitionID" ColumnName="TuitionID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="AcademicYearID" ColumnName="AcademicYearID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="FeesModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="HasUPass" ColumnName="HasUPass" />
+                <ScalarProperty Name="AcademicYearEndDate" ColumnName="AcademicYearEndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ProgramEndDate" ColumnName="ProgramEndDate" />
+                <ScalarProperty Name="FirstPaymentDate" ColumnName="FirstPaymentDate" />
+                <ScalarProperty Name="Campus" ColumnName="Campus" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="FeesModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tuitions">
+            <EntityTypeMapping TypeName="FeesModel.Tuition">
+              <MappingFragment StoreEntitySet="Tuition">
+                <ScalarProperty Name="AmountInternational" ColumnName="AmountInternational" />
+                <ScalarProperty Name="AmountDomestic" ColumnName="AmountDomestic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AcademicYearID" ColumnName="AcademicYearID" />
+                <ScalarProperty Name="TuitionID" ColumnName="TuitionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ProgramCollegeFee" TypeName="FeesModel.ProgramCollegeFee" StoreEntitySet="ProgramCollegeFee">
+            <EndProperty Name="Program">
+              <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+            </EndProperty>
+            <EndProperty Name="CollegeFee">
+              <ScalarProperty Name="CollegeFeeID" ColumnName="CollegeFeeID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
