@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="af31cc38920c4fb1b4aebea51fa9f1a7" Name="Diagram1">
-        <EntityTypeShape EntityType="FeesModel.AcademicYear" Width="1.5" PointX="0.5" PointY="6.25" />
-        <EntityTypeShape EntityType="FeesModel.CollegeFee" Width="1.5" PointX="2.75" PointY="7.625" />
-        <EntityTypeShape EntityType="FeesModel.CostItem" Width="1.5" PointX="7.25" PointY="10.625" />
-        <EntityTypeShape EntityType="FeesModel.Location" Width="1.5" PointX="5" PointY="0.5" />
-        <EntityTypeShape EntityType="FeesModel.Program" Width="1.5" PointX="5" PointY="3.625" />
-        <EntityTypeShape EntityType="FeesModel.Schedule" Width="1.5" PointX="7.25" PointY="5.625" />
-        <EntityTypeShape EntityType="FeesModel.School" Width="1.5" PointX="2.75" PointY="1.5" />
-        <EntityTypeShape EntityType="FeesModel.Tuition" Width="1.5" PointX="2.75" PointY="4.5" />
+        <EntityTypeShape EntityType="FeesModel.AcademicYear" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="FeesModel.CollegeFee" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="FeesModel.CostItem" Width="1.5" PointX="7.5" PointY="5.875" />
+        <EntityTypeShape EntityType="FeesModel.Location" Width="1.5" PointX="8.25" PointY="3" />
+        <EntityTypeShape EntityType="FeesModel.Program" Width="1.5" PointX="5.25" PointY="2.875" />
+        <EntityTypeShape EntityType="FeesModel.Schedule" Width="1.5" PointX="10.5" PointY="5.125" />
+        <EntityTypeShape EntityType="FeesModel.School" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="FeesModel.Tuition" Width="1.5" PointX="3" PointY="7.375" />
         <AssociationConnector Association="FeesModel.FK_CollegeFee_AcademicYear" />
         <AssociationConnector Association="FeesModel.FK_Program_AcademicYear" />
         <AssociationConnector Association="FeesModel.FK_Tuition_AcademicYear" />

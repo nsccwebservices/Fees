@@ -32,8 +32,10 @@ namespace NSCC.Fees.Data
         public string AcadPlan { get; set; }
         public Nullable<bool> IsInternationalOffering { get; set; }
         public Nullable<bool> IsPartTime { get; set; }
-        public Nullable<int> NonStandardTuition { get; set; }
-        public Nullable<int> FirstTermPayment { get; set; }
+        public Nullable<int> NonStandardTuitionDomestic { get; set; }
+        public Nullable<int> NonStandardTuitionInternational { get; set; }
+        public Nullable<int> FirstTermTuitionDomestic { get; set; }
+        public Nullable<int> FirstTermTuitionInternational { get; set; }
         public int CoopTypeID { get; set; }
         public Nullable<int> AmountCoopDomestic { get; set; }
         public Nullable<int> AmountCoopInternational { get; set; }

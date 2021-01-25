@@ -20,6 +20,7 @@
           <Property Name="CollegeFeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AcademicYearID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LookupName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="AmountDomestic" Type="int" Nullable="false" />
           <Property Name="AmountInternational" Type="int" Nullable="false" />
           <Property Name="IncludeOnCreateProgram" Type="bit" Nullable="false" />
@@ -40,6 +41,7 @@
           <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LongName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsMetroCampus" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -55,8 +57,10 @@
           <Property Name="AcadPlan" Type="varchar" MaxLength="10" />
           <Property Name="IsInternationalOffering" Type="bit" />
           <Property Name="IsPartTime" Type="bit" />
-          <Property Name="NonStandardTuition" Type="int" />
-          <Property Name="FirstTermPayment" Type="int" />
+          <Property Name="NonStandardTuitionDomestic" Type="int" />
+          <Property Name="NonStandardTuitionInternational" Type="int" />
+          <Property Name="FirstTermTuitionDomestic" Type="int" />
+          <Property Name="FirstTermTuitionInternational" Type="int" />
           <Property Name="CoopTypeID" Type="int" Nullable="false" />
           <Property Name="AmountCoopDomestic" Type="int" />
           <Property Name="AmountCoopInternational" Type="int" />
@@ -113,6 +117,7 @@
           <Property Name="TuitionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AcademicYearID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LookupName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="AmountDomestic" Type="int" Nullable="false" />
           <Property Name="AmountInternational" Type="int" Nullable="false" />
         </EntityType>
@@ -236,6 +241,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetSchedulesByAcademicYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AcademicYearID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="FeesModelStoreContainer">
           <EntitySet Name="AcademicYear" EntityType="Self.AcademicYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CollegeFee" EntityType="Self.CollegeFee" Schema="dbo" store:Type="Tables" />
@@ -336,6 +344,9 @@
             <End Role="CollegeFee" EntitySet="CollegeFees" />
             <End Role="Program" EntitySet="Programs" />
           </AssociationSet>
+          <FunctionImport Name="GetSchedulesByAcademicYear" EntitySet="Schedules" ReturnType="Collection(FeesModel.Schedule)">
+          <Parameter Name="AcademicYearID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="AcademicYear">
           <Key>
@@ -360,6 +371,7 @@
           <Property Name="IncludeOnCreateProgram" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AcademicYear" Relationship="FeesModel.FK_CollegeFee_AcademicYear" FromRole="CollegeFee" ToRole="AcademicYear" />
           <NavigationProperty Name="Programs" Relationship="FeesModel.ProgramCollegeFee" FromRole="CollegeFee" ToRole="Program" />
+          <Property Name="LookupName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CostItem">
           <Key>
@@ -379,6 +391,7 @@
           <Property Name="ShortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LongName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Schedules" Relationship="FeesModel.FK_Schedule_Location" FromRole="Location" ToRole="Schedule" />
+          <Property Name="IsMetroCampus" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -394,8 +407,10 @@
           <Property Name="AcadPlan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="IsInternationalOffering" Type="Boolean" />
           <Property Name="IsPartTime" Type="Boolean" />
-          <Property Name="NonStandardTuition" Type="Int32" />
-          <Property Name="FirstTermPayment" Type="Int32" />
+          <Property Name="NonStandardTuitionDomestic" Type="Int32" />
+          <Property Name="NonStandardTuitionInternational" Type="Int32" />
+          <Property Name="FirstTermTuitionDomestic" Type="Int32" />
+          <Property Name="FirstTermTuitionInternational" Type="Int32" />
           <Property Name="CoopTypeID" Type="Int32" Nullable="false" />
           <Property Name="AmountCoopDomestic" Type="Int32" />
           <Property Name="AmountCoopInternational" Type="Int32" />
@@ -457,6 +472,7 @@
           <Property Name="AmountInternational" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AcademicYear" Relationship="FeesModel.FK_Tuition_AcademicYear" FromRole="Tuition" ToRole="AcademicYear" />
           <NavigationProperty Name="Programs" Relationship="FeesModel.FK_Program_Tuition" FromRole="Tuition" ToRole="Program" />
+          <Property Name="LookupName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CollegeFee_AcademicYear">
           <End Type="FeesModel.AcademicYear" Role="AcademicYear" Multiplicity="1" />
@@ -558,6 +574,19 @@
           <End Type="FeesModel.CollegeFee" Role="CollegeFee" Multiplicity="*" />
           <End Type="FeesModel.Program" Role="Program" Multiplicity="*" />
         </Association>
+        <ComplexType Name="GetSchedulesByAcademicYear_Result">
+          <Property Type="Int32" Name="ScheduleID" Nullable="false" />
+          <Property Type="Int32" Name="ProgramID" Nullable="false" />
+          <Property Type="Int32" Name="LocationID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Campus" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="FirstPaymentDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ProgramEndDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AcademicYearEndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="HasUPass" Nullable="false" />
+          <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -576,6 +605,7 @@
           <EntitySetMapping Name="CollegeFees">
             <EntityTypeMapping TypeName="FeesModel.CollegeFee">
               <MappingFragment StoreEntitySet="CollegeFee">
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
                 <ScalarProperty Name="IncludeOnCreateProgram" ColumnName="IncludeOnCreateProgram" />
                 <ScalarProperty Name="AmountInternational" ColumnName="AmountInternational" />
                 <ScalarProperty Name="AmountDomestic" ColumnName="AmountDomestic" />
@@ -598,6 +628,7 @@
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="FeesModel.Location">
               <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="IsMetroCampus" ColumnName="IsMetroCampus" />
                 <ScalarProperty Name="LongName" ColumnName="LongName" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
@@ -623,8 +654,10 @@
                 <ScalarProperty Name="AmountCoopInternational" ColumnName="AmountCoopInternational" />
                 <ScalarProperty Name="AmountCoopDomestic" ColumnName="AmountCoopDomestic" />
                 <ScalarProperty Name="CoopTypeID" ColumnName="CoopTypeID" />
-                <ScalarProperty Name="FirstTermPayment" ColumnName="FirstTermPayment" />
-                <ScalarProperty Name="NonStandardTuition" ColumnName="NonStandardTuition" />
+                <ScalarProperty Name="FirstTermTuitionInternational" ColumnName="FirstTermTuitionInternational" />
+                <ScalarProperty Name="FirstTermTuitionDomestic" ColumnName="FirstTermTuitionDomestic" />
+                <ScalarProperty Name="NonStandardTuitionInternational" ColumnName="NonStandardTuitionInternational" />
+                <ScalarProperty Name="NonStandardTuitionDomestic" ColumnName="NonStandardTuitionDomestic" />
                 <ScalarProperty Name="IsPartTime" ColumnName="IsPartTime" />
                 <ScalarProperty Name="IsInternationalOffering" ColumnName="IsInternationalOffering" />
                 <ScalarProperty Name="AcadPlan" ColumnName="AcadPlan" />
@@ -667,6 +700,7 @@
           <EntitySetMapping Name="Tuitions">
             <EntityTypeMapping TypeName="FeesModel.Tuition">
               <MappingFragment StoreEntitySet="Tuition">
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
                 <ScalarProperty Name="AmountInternational" ColumnName="AmountInternational" />
                 <ScalarProperty Name="AmountDomestic" ColumnName="AmountDomestic" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -683,6 +717,8 @@
               <ScalarProperty Name="CollegeFeeID" ColumnName="CollegeFeeID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetSchedulesByAcademicYear" FunctionName="FeesModel.Store.GetSchedulesByAcademicYear">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

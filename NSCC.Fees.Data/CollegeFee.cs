@@ -26,6 +26,7 @@ namespace NSCC.Fees.Data
         public int AmountDomestic { get; set; }
         public int AmountInternational { get; set; }
         public bool IncludeOnCreateProgram { get; set; }
+        public string LookupName { get; set; }
     
         public virtual AcademicYear AcademicYear { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,6 +12,8 @@ namespace NSCC.Fees.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class FeesEntities : DbContext
     {
@@ -33,5 +35,23 @@ namespace NSCC.Fees.Data
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<Tuition> Tuitions { get; set; }
+    
+        public virtual ObjectResult<Schedule> GetSchedulesByAcademicYear(Nullable<int> academicYearID)
+        {
+            var academicYearIDParameter = academicYearID.HasValue ?
+                new ObjectParameter("AcademicYearID", academicYearID) :
+                new ObjectParameter("AcademicYearID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Schedule>("GetSchedulesByAcademicYear", academicYearIDParameter);
+        }
+    
+        public virtual ObjectResult<Schedule> GetSchedulesByAcademicYear(Nullable<int> academicYearID, MergeOption mergeOption)
+        {
+            var academicYearIDParameter = academicYearID.HasValue ?
+                new ObjectParameter("AcademicYearID", academicYearID) :
+                new ObjectParameter("AcademicYearID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Schedule>("GetSchedulesByAcademicYear", mergeOption, academicYearIDParameter);
+        }
     }
 }

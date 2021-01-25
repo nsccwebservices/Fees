@@ -23,6 +23,7 @@ namespace NSCC.Fees.Data
         public int LocationID { get; set; }
         public string ShortName { get; set; }
         public string LongName { get; set; }
+        public bool IsMetroCampus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedules { get; set; }

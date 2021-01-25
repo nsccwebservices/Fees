@@ -188,6 +188,22 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
+        //GetSchedulesByAcademicYear(int acadyear);
+        public IEnumerable<Schedule> GetSchedulesByAcademicYear(int acadyear)
+        {
+            try
+            {
+                var schedules = _context.GetSchedulesByAcademicYear(acadyear);
+                return schedules;
+                // var program = GetProgram(programID);
+                //  return program.Schedules.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Schedule GetSchedule(int scheduleID)
         {
             try
@@ -298,6 +314,19 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
+        public IEnumerable<Location> GetMetroCampuses()
+        {
+            try
+            {
+                var locations = _context.Locations;
+                return locations.Where(loc => loc.IsMetroCampus).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         #endregion
 
         #region "Cost Items"
@@ -392,6 +421,19 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
+        public Tuition GetTuition(int acadyear, string lookupName)
+        {
+            try
+            {
+                var entities = _context.Tuitions;
+                return entities.Where(p => p.AcademicYearID == acadyear && String.Compare(p.LookupName, lookupName, false) == 0).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void AddTuition(Tuition entity)
         {
             try
@@ -465,7 +507,18 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
-
+        public CollegeFee GetCollegeFee(int acadyear, string lookupName)
+        {
+            try
+            {
+                var entities = _context.CollegeFees;
+                return entities.Where(p => p.AcademicYearID == acadyear && String.Compare(p.LookupName, lookupName, false) == 0 ).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public void UpdateCollegeFee(CollegeFee entity)
         {
             try
