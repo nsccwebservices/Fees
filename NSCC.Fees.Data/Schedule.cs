@@ -17,8 +17,6 @@ namespace NSCC.Fees.Data
         public int ScheduleID { get; set; }
         public int ProgramID { get; set; }
         public int LocationID { get; set; }
-        public string Title { get; set; }
-        public string Campus { get; set; }
         public Nullable<System.DateTime> FirstPaymentDate { get; set; }
         public Nullable<System.DateTime> ProgramEndDate { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
