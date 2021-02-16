@@ -16,6 +16,10 @@ namespace NSCC.Fees.Business
         public const string INTERNATIONAL_STUDENT_FEE = "INTERNATIONAL_STUDENT_FEE";
 
         public const string NON_STANDARD_TUITION = "NON_STANDARD";
+        public const string CURRENCY_FORMAT = "C0";
 
+        public const int COOP_NONE = 1;
+        public const int COOP_MANDATORY = 2;
+        public const int COOP_OPTIONAL = 3;
     }
 }

@@ -51,11 +51,15 @@ namespace NSCC.Fees.Business
         #endregion
 
         #region "Programs"
-        public IEnumerable<Program> GetPrograms()
+        public IEnumerable<Program> GetPrograms(bool includeUnpublished = true)
         {
             try
             {
                 var programs = _context.Programs;//.Include(e => e.Categories).Include(e => e.Locations);
+                if (!includeUnpublished)
+                {
+                    return programs.Where(i => i.IsPublished == true).ToList();
+                }
                 return programs.ToList();
             }
             catch (Exception)
@@ -63,11 +67,15 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
-        public IEnumerable<Program> GetPrograms(int acadyear)
+        public IEnumerable<Program> GetPrograms(int acadyear, bool includeUnpublished = true)
         {
             try
             {
-                var programs = _context.Programs;//.Include(e => e.Categories).Include(e => e.Locations);
+                var programs = _context.Programs;
+                if (!includeUnpublished)
+                {
+                    return programs.Where(i => i.AcademicYearID == acadyear && i.IsPublished == true).ToList();
+                }
                 return programs.Where(i => i.AcademicYearID == acadyear).ToList();
             }
             catch (Exception)
@@ -89,6 +97,18 @@ namespace NSCC.Fees.Business
             }
         }
 
+        public Program GetProgram(int acadyear, string program, string plan)
+        {
+            try
+            {
+                var programs = _context.Programs;
+                return programs.Where(p => p.AcademicYearID == acadyear && String.Compare(p.AcadProg, program, true) == 0 && String.Compare(p.AcadPlan, plan, true) == 0).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public void UpdateProgram(Program program, List<int> collegeFees)
         {
             try

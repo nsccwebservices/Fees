@@ -15,9 +15,11 @@ namespace NSCC.Fees.Business
         IEnumerable<AcademicYear> GetAcademicYears(int count);
         AcademicYear GetAcademicYear(int acadyear);
 
-        IEnumerable<Program> GetPrograms();
-        IEnumerable<Program> GetPrograms(int acadyear);
+        IEnumerable<Program> GetPrograms(bool includeUnpublished = true);
+        IEnumerable<Program> GetPrograms(int acadyear, bool includeUnpublished = true);
         Program GetProgram(int programID);
+        Program GetProgram(int acadyear, string program, string plan);
+
 
         void UpdateProgram(Program program, List<int> collegeFees);
         void AddProgram(Program program);

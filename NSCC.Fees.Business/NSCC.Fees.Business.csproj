@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AlphaCount.cs" />
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\Extensions.cs" />
     <Compile Include="Interfaces\IFeesRepository.cs" />
