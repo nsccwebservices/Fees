@@ -7,6 +7,13 @@
     <title></title>
 	<link href="https://www.nscc.ca/inc/css/styles.css?v=2.4" rel="stylesheet"/>
     <link href="https://www.nscc.ca/inc/css/tablesaw.stackonly.css?v=1.0" rel="stylesheet"/>
+    <link href="https://www.nscc.ca/inc/css/jquery.qtip2.1.1.min.css" rel="stylesheet" />
+    <link href="https://www.nscc.ca/inc/css/programs.css" rel="stylesheet" />
+
+    <script src="https://www.nscc.ca/inc/js/jquery/jquery-1.8.2.min.js"></script>
+
+    <script src="https://www.nscc.ca/inc/js/jquery/jquery.qtip2.1.1.min.js"></script>
+    <script src="https://www.nscc.ca/inc/js/nscc/fees-page.js?v=1.0"></script>
 </head>
 <body>
     <form id="form1" runat="server">

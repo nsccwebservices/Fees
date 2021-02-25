@@ -126,12 +126,29 @@
 <asp:Literal runat="server" ID="litNotesTextbooks" />
 </asp:PlaceHolder>
 
+
+<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+    <thead>
+    <tr>
+        <td>Classroom/Portfolio Supplies</td>
+        <td>Domestic amount</td>
+        <asp:PlaceHolder runat="server" ID="plcColSupplies" Visible="false"><td>International amount</td></asp:PlaceHolder>
+    </tr>
+    </thead>
+    <tr>
+        <td>Classroom/Portfolio Supplies</td>
+        <td><asp:Literal runat="server" ID="litSuppliesDomestic" /></td>
+        <asp:PlaceHolder runat="server" ID="plcColIntSupplies" Visible="false"><td><asp:Literal runat="server" ID="litSuppliesInternational" /></td></asp:PlaceHolder>
+    </tr>
+</table>
+
+
 <asp:PlaceHolder runat="server" ID="plcCostItems">
 <asp:Repeater runat="server" ID="rptCostItems" OnItemDataBound="rptCostItems_ItemDataBound">
     <HeaderTemplate><table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
         <thead>
         <tr>
-            <td>Additional program costs</td>
+            <td>Additional program costs<span class="blended-delivery-info"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="blended-delivery-info-tooltip"><strong>Additional program costs</strong><br />If you already have these items...</span></td>
             <td>Domestic amount</td>
             <asp:PlaceHolder runat="server" ID="plcColCostItems"><td>International amount</td></asp:PlaceHolder>
         </tr>
@@ -164,7 +181,7 @@
 <table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <td>Total Cost = Tuition and college fees + co-op (if applicable) + textbooks + additional program costs</td>
+        <td>Total Cost = Tuition and college fees + co-op (if applicable) + textbooks  + classroom/portfolio supplies + additional program costs</td>
         <td>Domestic total</td>
         <asp:PlaceHolder runat="server" ID="plcColTotalCost" Visible="false"><td>International total</td></asp:PlaceHolder>
     </tr>
@@ -208,6 +225,9 @@
     </ItemTemplate>
     <FooterTemplate></table></FooterTemplate>
 </asp:Repeater>
+<div>
+    <a runat="server" id="lnkAcademicCalendar">View the NSCC Academic Calendar</a>
+</div>
 </asp:PlaceHolder>
 
 <asp:PlaceHolder runat="server" ID="plcNotesSchedule" Visible="false">

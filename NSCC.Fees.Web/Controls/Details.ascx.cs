@@ -10,6 +10,8 @@ using NSCC.Fees.Business;
 using NSCC.Fees.Business.Classes;
 using NSCC.Fees.Data;
 using NSCC.Fees.Web.Classes;
+using System.Web.UI.HtmlControls;
+using System.Net;
 
 namespace NSCC.Fees.Web.Controls
 {
@@ -48,24 +50,21 @@ namespace NSCC.Fees.Web.Controls
 
             if (_program != null && _program.IsPublished)
             {
+
+                //metadata - description
+                if (!String.IsNullOrEmpty(Config.Default.MetaDescription))
+                {
+                    HtmlMeta meta = new HtmlMeta();
+                    meta.Name = "description";
+                    meta.Content = WebUtility.HtmlDecode(String.Format(Config.Default.MetaDescription, _program.Name));
+                    this.Page.Header.Controls.Add(meta);
+                }
+
+                //metadata - title
+                Page.Title = String.Concat(WebUtility.HtmlDecode(_program.Name), " | Fees | NSCC");
+
                 lblTitle.Text = String.Format(lblTitle.Text, _program.Name);
                 lblProgramFees.Text = String.Format(lblProgramFees.Text, _program.AcademicYear.Name);
-
-                //AcademicYear = entity.AcademicYear.Name,
-                //    Name = entity.Name,
-                //    TuitionType = entity.Tuition.Name,
-                //    NonStandardTuitionDomestic = entity.NonStandardTuitionDomestic ?? 0,
-                //    NonStandardTuitionInternational = entity.NonStandardTuitionInternational ?? 0,
-                //    StudentAssociation = entity.CollegeFees.FirstOrDefault(x => x.LookupName == NSCC.Fees.Business.Constants.STUDENT_ASSOCIATION),
-                //    HealthAndDental = entity.CollegeFees.FirstOrDefault(x => x.LookupName == NSCC.Fees.Business.Constants.HEALTH_DENTAL),
-                //    CollegeService = entity.CollegeFees.FirstOrDefault(x => x.LookupName == NSCC.Fees.Business.Constants.COLLEGE_SERVICE),
-                //    IsPartTime = entity.IsPartTime ?? false,
-                //    IsInternational = entity.IsInternationalOffering ?? false,
-                //    FirstTermTuitionDomestic = entity.FirstTermTuitionDomestic ?? 0,
-                //    FirstTermTuitionInternational = entity.FirstTermTuitionInternational ?? 0,
-                //    Textbooks = entity.AmountTextBooks ?? 0,
-                //    ClassroomSupplies = entity.AmountTextBooks ?? 0,
-                //    TotalAdditionalCostItems = entity.CostItems.Sum(item => item.Cost),
 
                 litTuitionDomestic.Text = _program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? (_program.NonStandardTuitionDomestic ?? 0).ToString(Business.Constants.CURRENCY_FORMAT) : _program.Tuition.AmountDomestic.ToString(Business.Constants.CURRENCY_FORMAT);
                 litTuitionInternational.Text = _program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? (_program.NonStandardTuitionInternational ?? 0).ToString(Business.Constants.CURRENCY_FORMAT) : _program.Tuition.AmountInternational.ToString(Business.Constants.CURRENCY_FORMAT);
@@ -76,8 +75,17 @@ namespace NSCC.Fees.Web.Controls
                 if (collegeService != null)
                 {
                     plcCollegeServiceFee.Visible = true;
-                    litCollegeServiceFeeDomestic.Text = collegeService.AmountDomestic.ToString();
-                    litCollegeServiceFeeInternational.Text = collegeService.AmountInternational.ToString();
+                    if (_program.IsPartTime ?? false)
+                    {
+                        litCollegeServiceFeeDomestic.Text = ((int)Math.Ceiling((decimal)collegeService.AmountDomestic / 2)).ToString();
+                        litCollegeServiceFeeInternational.Text = ((int)Math.Ceiling((decimal)collegeService.AmountInternational / 2)).ToString();
+                    }
+                    else
+                    {
+                        litCollegeServiceFeeDomestic.Text = collegeService.AmountDomestic.ToString();
+                        litCollegeServiceFeeInternational.Text = collegeService.AmountInternational.ToString();
+                    }
+
                 }
 
                 CollegeFee healthAndDental = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.HEALTH_DENTAL);
@@ -92,16 +100,27 @@ namespace NSCC.Fees.Web.Controls
                 if (studentAssociation != null)
                 {
                     plcStudentAssociationFee.Visible = true;
-                    litStudentAssociationFeeDomestic.Text = studentAssociation.AmountDomestic.ToString();
-                    litStudentAssociationFeeInternational.Text = studentAssociation.AmountInternational.ToString();
+                    if (_program.IsPartTime ?? false)
+                    {
+                        litStudentAssociationFeeDomestic.Text = ((int)Math.Ceiling((decimal)studentAssociation.AmountDomestic / 2)).ToString();
+                        litStudentAssociationFeeInternational.Text = ((int)Math.Ceiling((decimal)studentAssociation.AmountInternational / 2 )).ToString();
+                    }
+                    else
+                    {
+                        litStudentAssociationFeeDomestic.Text = studentAssociation.AmountDomestic.ToString();
+                        litStudentAssociationFeeInternational.Text = studentAssociation.AmountInternational.ToString();
+                    }
+
                 }
 
+                var amountUpass = 0;
                 if (_program.Schedules.Any(x => x.HasUPass))
                 {
                     CollegeFee upass = _repository.GetCollegeFee(Config.Default.AcademicYear, Business.Constants.UPASS);
                     if (upass != null)
                     {
                         plcUPass.Visible = true;
+                        amountUpass = upass.AmountDomestic;
                         litUPassDomestic.Text = upass.AmountDomestic.ToString();
                         litUPassInternational.Text = upass.AmountInternational.ToString();
                     }
@@ -116,16 +135,17 @@ namespace NSCC.Fees.Web.Controls
                 }
 
                 CollegeFee isf = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.INTERNATIONAL_STUDENT_FEE);
-                if (isf != null)
+                if (isf != null && (_program.IsInternationalOffering ?? false))
                 {
                     litInternationalStudentFeeInternational.Text = isf.AmountInternational.ToString();
+                    plcInternationalStudentFee.Visible = true;
                 }
 
                 #endregion
 
                 #region "Total of Tuition + College Fees"
-                var totalDomestic = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionDomestic ?? 0 : _program.Tuition.AmountDomestic) + _program.CollegeFees.Sum(item => item.AmountDomestic);
-                var totalInternational = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionInternational ?? 0 : _program.Tuition.AmountInternational) + _program.CollegeFees.Sum(item => item.AmountInternational);
+                var totalDomestic = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionDomestic ?? 0 : _program.Tuition.AmountDomestic) + CalculateCollegeFeesDomestic();
+                var totalInternational = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionInternational ?? 0 : _program.Tuition.AmountInternational) + CalculateCollegeFeesInternational();
 
                 litTotalDomestic.Text = totalDomestic.ToString(Business.Constants.CURRENCY_FORMAT);
                 litTotalInternational.Text = totalInternational.ToString(Business.Constants.CURRENCY_FORMAT);
@@ -150,11 +170,11 @@ namespace NSCC.Fees.Web.Controls
                     litCoopInternational.Text = (_program.AmountCoopInternational ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
                 }
 
-                //if (!String.IsNullOrEmpty(_program.NotesCoop))
-                //{
-                //    litNotesCoop.Text = _program.NotesCoop.Trim();
-                //    plcNotesCoop.Visible = true;
-                //}
+                if (!String.IsNullOrEmpty(_program.NotesCoop))
+                {
+                    litNotesCoop.Text = _program.NotesCoop.Trim();
+                    plcNotesCoop.Visible = true;
+                }
                 #endregion
 
                 #region "Textbooks"
@@ -167,6 +187,13 @@ namespace NSCC.Fees.Web.Controls
                     litNotesTextbooks.Text = _program.NotesTextBooks.Trim();
                     plcNotesTextbooks.Visible = true;
                 }
+
+                #endregion
+
+                #region "Classroom/Portfolio supplies"
+
+                litSuppliesDomestic.Text = (_program.AmountSupplies ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
+                litSuppliesInternational.Text = litSuppliesDomestic.Text;
 
                 #endregion
 
@@ -184,15 +211,16 @@ namespace NSCC.Fees.Web.Controls
 
                 #endregion
 
-                #region "Total Cost section - Tuition and college fees + co-op (if mandatory) + textbooks + additional program costs"
-                litTotalCostDomestic.Text = (totalDomestic + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopDomestic ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
-                litTotalCostInternational.Text = (totalInternational + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopInternational ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
+                #region "Total Cost section"
+                // Tuition and college fees + U-Pass amount (if any Schedule has UPass checked) + co-op (if mandatory) + textbooks + additional program costs + classroom/portfolio supplies"
+                litTotalCostDomestic.Text = (totalDomestic + amountUpass + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopDomestic ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + (_program.AmountSupplies ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
+                litTotalCostInternational.Text = (totalInternational + amountUpass +  (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopInternational ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + (_program.AmountSupplies ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
 
-                //if (!String.IsNullOrEmpty(_program.NotesPayment))
-                //{
-                //    litNotesPayment.Text = _program.NotesPayment.Trim();
-                //    plcNotesPayment.Visible = true;
-                //}
+                if (!String.IsNullOrEmpty(_program.NotesPayment))
+                {
+                    litNotesPayment.Text = _program.NotesPayment.Trim();
+                    plcNotesPayment.Visible = true;
+                }
                 #endregion
 
                 #region "Schedules - Repeater and Notes"
@@ -200,6 +228,9 @@ namespace NSCC.Fees.Web.Controls
                 var schedules = _program.Schedules.Where(p => p.IsPublished).ToList();
                 rptSchedules.DataSource = schedules;
                 rptSchedules.DataBind();
+
+                lnkAcademicCalendar.HRef = Config.Default.AcademicCalendarURL;
+
                 plcSchedules.Visible = schedules.Count > 0;
 
 
@@ -218,6 +249,8 @@ namespace NSCC.Fees.Web.Controls
                 }
 
 
+
+
                 if (_program.IsInternationalOffering ?? false)//default to false if null
                 {
  
@@ -229,7 +262,6 @@ namespace NSCC.Fees.Web.Controls
                     plcColIntStudentAssociation.Visible = true;
                     plcColIntUPass.Visible = true;
                     plcColIntParkingPass.Visible = true;
-                    plcInternationalStudentFee.Visible = true;
                     plcColDomTotal.Visible = true;
                     plcColIntTotal.Visible = true;
 
@@ -238,6 +270,9 @@ namespace NSCC.Fees.Web.Controls
 
                     plcColTextbooks.Visible = true;
                     plcColIntTextbooks.Visible = true;
+
+                    plcColSupplies.Visible = true;
+                    plcColIntSupplies.Visible = true;
 
                     plcColTotalCost.Visible = true;
                     plcColIntTotalCost.Visible = true;
@@ -248,6 +283,7 @@ namespace NSCC.Fees.Web.Controls
                 }
             }
         }
+
 
         protected void rptCostItems_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -288,12 +324,85 @@ namespace NSCC.Fees.Web.Controls
                 }
             }
         }
+
+
+        private int CalculateCollegeFeesDomestic()
+        {
+            var sum = 0;
+            if (_program.IsPartTime ?? false)
+            {
+                foreach (CollegeFee fee in _program.CollegeFees)
+                {
+                    switch (fee.LookupName)
+                    {
+                        //upass is added in separately with the schedules
+                        case Business.Constants.UPASS:
+
+                            break;
+
+                        case Business.Constants.COLLEGE_SERVICE:
+                        case Business.Constants.STUDENT_ASSOCIATION:
+
+                            sum += (int)Math.Ceiling((decimal)fee.AmountDomestic / 2);
+
+                            break;
+
+                        default:
+
+                            sum += fee.AmountDomestic;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                sum = _program.CollegeFees.Sum(item => item.AmountDomestic);
+            }
+
+            return sum;
+        }
+        private int CalculateCollegeFeesInternational()
+        {
+            var sum = 0;
+            if (_program.IsPartTime ?? false)
+            {
+                foreach (CollegeFee fee in _program.CollegeFees)
+                {
+                    switch (fee.LookupName)
+                    {
+                        //upass is added in separately with the schedules
+                        case Business.Constants.UPASS:
+
+                            break;
+
+                        case Business.Constants.COLLEGE_SERVICE:
+                        case Business.Constants.STUDENT_ASSOCIATION:
+
+                            sum += (int)Math.Ceiling((decimal)fee.AmountInternational / 2);
+
+                            break;
+
+                        default:
+
+                            sum += fee.AmountInternational;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                sum = _program.CollegeFees.Sum(item => item.AmountInternational);
+            }
+
+            return sum;
+        }
+
         private void ParseQueryString()
         {
             Int32.TryParse(Request.QueryString[Web.Classes.Constants.QS_KEY_PROGRAM_ID], out _programId);
             _acadProg = Request.QueryString[Web.Classes.Constants.QS_KEY_ACADEMIC_PROGRAM];
             _acadPlan = Request.QueryString[Web.Classes.Constants.QS_KEY_ACADEMIC_PLAN];
-    }
+        }
 
         private void LoadProgramFee()
         {

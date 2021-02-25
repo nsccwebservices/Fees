@@ -5,5 +5,11 @@
     <Setting Name="AcademicYear" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">2020</Value>
     </Setting>
+    <Setting Name="MetaDescription" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0} - This is the meta descripton text for all Program Fee pages. Only the title changes</Value>
+    </Setting>
+    <Setting Name="AcademicCalendarURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://www.nscc.ca/learning_programs/academic_schedule/default.aspx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

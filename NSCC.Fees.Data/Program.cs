@@ -52,6 +52,8 @@ namespace NSCC.Fees.Data
         public string LastModifiedBy { get; set; }
         public string LastModifiedByFirstname { get; set; }
         public string LastModifiedByLastname { get; set; }
+        public string NotesPayment { get; set; }
+        public string NotesCoop { get; set; }
     
         public virtual AcademicYear AcademicYear { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

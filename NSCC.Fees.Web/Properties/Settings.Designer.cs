@@ -31,5 +31,24 @@ namespace NSCC.Fees.Web.Properties {
                 return ((int)(this["AcademicYear"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0} - This is the meta descripton text for all Program Fee pages. Only the title " +
+            "changes")]
+        public string MetaDescription {
+            get {
+                return ((string)(this["MetaDescription"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.nscc.ca/learning_programs/academic_schedule/default.aspx")]
+        public string AcademicCalendarURL {
+            get {
+                return ((string)(this["AcademicCalendarURL"]));
+            }
+        }
     }
 }

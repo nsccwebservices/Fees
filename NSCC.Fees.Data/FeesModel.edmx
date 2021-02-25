@@ -72,6 +72,8 @@
           <Property Name="NotesTextBooks" Type="nvarchar" MaxLength="2048" />
           <Property Name="NotesProgramCosts" Type="nvarchar" MaxLength="2048" />
           <Property Name="NotesSchedule" Type="nvarchar" MaxLength="2048" />
+          <Property Name="NotesPayment" Type="nvarchar" MaxLength="2048" />
+          <Property Name="NotesCoop" Type="nvarchar" MaxLength="2048" />
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="LastModified" Type="datetime" Nullable="false" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
@@ -444,6 +446,8 @@
           <NavigationProperty Name="Tuition" Relationship="FeesModel.FK_Program_Tuition" FromRole="Program" ToRole="Tuition" />
           <NavigationProperty Name="Schedules" Relationship="FeesModel.FK_Schedule_Program" FromRole="Program" ToRole="Schedule" />
           <NavigationProperty Name="CollegeFees" Relationship="FeesModel.ProgramCollegeFee" FromRole="Program" ToRole="CollegeFee" />
+          <Property Name="NotesPayment" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="NotesCoop" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -636,6 +640,8 @@
           <EntitySetMapping Name="Programs">
             <EntityTypeMapping TypeName="FeesModel.Program">
               <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="NotesCoop" ColumnName="NotesCoop" />
+                <ScalarProperty Name="NotesPayment" ColumnName="NotesPayment" />
                 <ScalarProperty Name="LastModifiedByLastname" ColumnName="LastModifiedByLastname" />
                 <ScalarProperty Name="LastModifiedByFirstname" ColumnName="LastModifiedByFirstname" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
