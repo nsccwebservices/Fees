@@ -31,6 +31,24 @@ namespace NSCC.Fees.Web.Controls {
         protected global::System.Web.UI.WebControls.Label lblProgramFees;
         
         /// <summary>
+        /// plcProgramPageLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcProgramPageLink;
+        
+        /// <summary>
+        /// lnkProgramPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkProgramPage;
+        
+        /// <summary>
         /// plcInternationalText control.
         /// </summary>
         /// <remarks>
@@ -47,15 +65,6 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntAmount;
-        
-        /// <summary>
-        /// plcColCanadianDollars control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plcColCanadianDollars;
         
         /// <summary>
         /// litTuitionDomestic control.
@@ -427,6 +436,15 @@ namespace NSCC.Fees.Web.Controls {
         protected global::System.Web.UI.WebControls.Literal litNotesCoop;
         
         /// <summary>
+        /// plcTextbooks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcTextbooks;
+        
+        /// <summary>
         /// plcColTextbooks control.
         /// </summary>
         /// <remarks>
@@ -479,6 +497,15 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesTextbooks;
+        
+        /// <summary>
+        /// plcSupplies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcSupplies;
         
         /// <summary>
         /// plcColSupplies control.
@@ -625,15 +652,6 @@ namespace NSCC.Fees.Web.Controls {
         protected global::System.Web.UI.WebControls.Repeater rptSchedules;
         
         /// <summary>
-        /// lnkAcademicCalendar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkAcademicCalendar;
-        
-        /// <summary>
         /// plcNotesSchedule control.
         /// </summary>
         /// <remarks>
@@ -652,21 +670,12 @@ namespace NSCC.Fees.Web.Controls {
         protected global::System.Web.UI.WebControls.Literal litNotesSchedule;
         
         /// <summary>
-        /// plcProgramPageLink control.
+        /// lnkAcademicCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plcProgramPageLink;
-        
-        /// <summary>
-        /// lnkProgramPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkProgramPage;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkAcademicCalendar;
     }
 }

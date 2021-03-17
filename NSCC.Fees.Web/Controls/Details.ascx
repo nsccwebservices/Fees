@@ -8,21 +8,18 @@
 
 <p>Global Intro copy - show on every program fees page.</p>
 
-<asp:PlaceHolder runat="server" ID="plcInternationalText" Visible="false">Not available to international students.</asp:PlaceHolder>
+<div>
+<asp:PlaceHolder runat="server" ID="plcProgramPageLink" Visible="false">For details about this program visit the <a runat="server" id="lnkProgramPage">program page</a>.</asp:PlaceHolder><asp:PlaceHolder runat="server" ID="plcInternationalText" Visible="false"> Not available to international students.</asp:PlaceHolder>
+</div>
 
-<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+<table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <td>Tuition and college fees</td>
-        <td>Domestic amount</td>
-        <asp:PlaceHolder runat="server" ID="plcColIntAmount" Visible="false"><td>International amount</td></asp:PlaceHolder>
+        <th>Tuition and college fees</th>
+        <th>Domestic amount (Can$)</th>
+        <asp:PlaceHolder runat="server" ID="plcColIntAmount" Visible="false"><th>International amount (Can$)</th></asp:PlaceHolder>
     </tr>
     </thead>
-    <tr>
-        <td>&nbsp;</td>
-        <td>(Can$)</td>
-        <asp:PlaceHolder runat="server" ID="plcColCanadianDollars" Visible="false"><td>(Can$)</td></asp:PlaceHolder>
-    </tr>
     <tr>
         <td>Tuition</td>
         <td><asp:Literal runat="server" ID="litTuitionDomestic" /></td>
@@ -37,21 +34,21 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcHealthAndDental" Visible="false">
     <tr>
-        <td>Student health &amp; dental benefits</td>
+        <td>Student health &amp; dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info"><strong>Health &amp; Dental Notes</strong>If you already have these items...</span></td>
         <td><asp:Literal runat="server" ID="litHealthAndDentalDomestic" /></td>
        <asp:PlaceHolder runat="server" ID="plcColIntHealthandDental" Visible="false"><td><asp:Literal runat="server" ID="litHealthAndDentalInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcStudentAssociationFee" Visible="false">
     <tr>
-        <td>Student Association fee</td>
+        <td>Student Association fee<span class="sa-fee-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">The Student Association fee should be adjusted based on your campus. Student Association (SA) Fee varies by campus - Check <a href="/admissions/cost_and_financial_aid/safees/index.asp">your campus fee</a> to confirm your exact amount.</span></td>
         <td><asp:Literal runat="server" ID="litStudentAssociationFeeDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntStudentAssociation" Visible="false"><td><asp:Literal runat="server" ID="litStudentAssociationFeeInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcUPass" Visible="false">
     <tr>
-        <td>U-Pass</td>
+        <td>U-Pass<span class="upass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="upass-info-tooltip tooltip-info"><strong>U-Pass Notes</strong>If you already have these items...</span></td>
         <td><asp:Literal runat="server" ID="litUPassDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntUPass" Visible="false"><td><asp:Literal runat="server" ID="litUPassInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -70,12 +67,12 @@
         <td><asp:Literal runat="server" ID="litInternationalStudentFeeInternational" /></td>
     </tr>
     </asp:PlaceHolder>
-    <tr>
+    <tr class="fees-total-row">
         <td>Total</td>
         <td><asp:Literal runat="server" ID="litTotalDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColDomTotal" Visible="false"><td><asp:Literal runat="server" ID="litTotalInternational" /></td></asp:PlaceHolder>
     </tr>
-    <tr>
+    <tr class="fees-total-row">
         <td>Payment (1st term)</td>
         <td><asp:Literal runat="server" ID="litPaymentFirstTermDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntTotal" Visible="false"><td><asp:Literal runat="server" ID="litPaymentFirstTermInternational" /></td></asp:PlaceHolder>
@@ -83,16 +80,19 @@
 </table>
 
 <asp:PlaceHolder runat="server" ID="plcNotesTuition" Visible="false">
+<div class="fees-notes">
 <asp:Literal runat="server" ID="litNotesTuition" />
+</div>
 </asp:PlaceHolder>
 
+
 <asp:PlaceHolder runat="server" ID="plcCoop" Visible="false">
-<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+<table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <td>Cooperative Education (Co-op)</td>
-        <td>Domestic amount</td>
-        <asp:PlaceHolder runat="server" ID="plcColCoop" Visible="false"><td>International amount</td></asp:PlaceHolder>
+        <th>Cooperative Education (Co-op)</th>
+        <th>Domestic amount</th>
+        <asp:PlaceHolder runat="server" ID="plcColCoop" Visible="false"><th>International amount</th></asp:PlaceHolder>
     </tr>
     </thead>
     <tr>
@@ -103,17 +103,21 @@
 </table>
 </asp:PlaceHolder>
 
+
 <asp:PlaceHolder runat="server" ID="plcNotesCoop" Visible="false">
+<div class="fees-notes">
 <asp:Literal runat="server" ID="litNotesCoop" />
+</div>
 </asp:PlaceHolder>
 
 
-<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+<asp:PlaceHolder runat="server" ID="plcTextbooks" Visible="false">
+<table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <td>Textbooks (estimate)</td>
-        <td>Domestic amount</td>
-        <asp:PlaceHolder runat="server" ID="plcColTextbooks" Visible="false"><td>International amount</td></asp:PlaceHolder>
+        <th>Textbooks (estimate)</th>
+        <th>Domestic amount</th>
+        <asp:PlaceHolder runat="server" ID="plcColTextbooks" Visible="false"><th>International amount</th></asp:PlaceHolder>
     </tr>
     </thead>
     <tr>
@@ -122,17 +126,22 @@
         <asp:PlaceHolder runat="server" ID="plcColIntTextbooks" Visible="false"><td><asp:Literal runat="server" ID="litTextbooksInternational" /></td></asp:PlaceHolder>
     </tr>
 </table>
+</asp:PlaceHolder>
+
 <asp:PlaceHolder runat="server" ID="plcNotesTextbooks" Visible="false">
+<div class="fees-notes">
 <asp:Literal runat="server" ID="litNotesTextbooks" />
+</div>
 </asp:PlaceHolder>
 
 
-<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+<asp:PlaceHolder runat="server" ID="plcSupplies" Visible="false">
+<table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <td>Classroom/Portfolio Supplies</td>
-        <td>Domestic amount</td>
-        <asp:PlaceHolder runat="server" ID="plcColSupplies" Visible="false"><td>International amount</td></asp:PlaceHolder>
+        <th>Classroom/Portfolio Supplies</th>
+        <th>Domestic amount</th>
+        <asp:PlaceHolder runat="server" ID="plcColSupplies" Visible="false"><th>International amount</th></asp:PlaceHolder>
     </tr>
     </thead>
     <tr>
@@ -141,16 +150,15 @@
         <asp:PlaceHolder runat="server" ID="plcColIntSupplies" Visible="false"><td><asp:Literal runat="server" ID="litSuppliesInternational" /></td></asp:PlaceHolder>
     </tr>
 </table>
-
-
+</asp:PlaceHolder>
 <asp:PlaceHolder runat="server" ID="plcCostItems">
 <asp:Repeater runat="server" ID="rptCostItems" OnItemDataBound="rptCostItems_ItemDataBound">
-    <HeaderTemplate><table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+    <HeaderTemplate><table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
         <thead>
         <tr>
-            <td>Additional program costs<span class="blended-delivery-info"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="blended-delivery-info-tooltip"><strong>Additional program costs</strong><br />If you already have these items...</span></td>
-            <td>Domestic amount</td>
-            <asp:PlaceHolder runat="server" ID="plcColCostItems"><td>International amount</td></asp:PlaceHolder>
+            <th>Additional program costs</th>
+            <th>Domestic amount</th>
+            <asp:PlaceHolder runat="server" ID="plcColCostItems"><th>International amount</th></asp:PlaceHolder>
         </tr>
         </thead>
     </HeaderTemplate>
@@ -162,7 +170,7 @@
         </tr>
     </ItemTemplate>
     <FooterTemplate>
-        <tr>
+        <tr class="fees-total-row">
             <td>Total (HST not incuded)</td>
             <td><asp:Literal runat="server" ID="litCostItemsTotalDomestic" /></td>
             <asp:PlaceHolder runat="server" ID="plcIntColCostItemsTotal"><td><asp:Literal runat="server" ID="litCostItemsTotalInternational" /></td></asp:PlaceHolder>
@@ -170,30 +178,36 @@
         </table>
     </FooterTemplate>
 </asp:Repeater>
+<p>Additional program costs generic message</p>
 </asp:PlaceHolder>
-
 
 <asp:PlaceHolder runat="server" ID="plcNotesCostItems" Visible="false">
+<div class="fees-notes">
 <asp:Literal runat="server" ID="litNotesCostItems" />
+</div>
 </asp:PlaceHolder>
 
 
-<table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+
+<table class="tablesaw tablesaw-stack fees-3c">
     <thead>
     <tr>
-        <td>Total Cost = Tuition and college fees + co-op (if applicable) + textbooks  + classroom/portfolio supplies + additional program costs</td>
-        <td>Domestic total</td>
-        <asp:PlaceHolder runat="server" ID="plcColTotalCost" Visible="false"><td>International total</td></asp:PlaceHolder>
+        <th>Total Cost</th>
+        <th>Domestic total</th>
+        <asp:PlaceHolder runat="server" ID="plcColTotalCost" Visible="false"><th>International total</th></asp:PlaceHolder>
     </tr>
     </thead>
-    <tr>
-        <td>&nbsp;</td>
+    <tr class="fees-total-row">
+        <td>Tuition and college fees + co-op (if applicable) + textbooks  + classroom/portfolio supplies + additional program costs</td>
         <td><asp:Literal runat="server" ID="litTotalCostDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntTotalCost" Visible="false"><td><asp:Literal runat="server" ID="litTotalCostInternational" /></td></asp:PlaceHolder>
     </tr>
 </table>
+
 <asp:PlaceHolder runat="server" ID="plcNotesPayment" Visible="false">
+<div class="fees-notes">
 <asp:Literal runat="server" ID="litNotesPayment" />
+</div>
 </asp:PlaceHolder>
 
 
@@ -201,15 +215,15 @@
 <asp:PlaceHolder runat="server" ID="plcSchedules" Visible="false">
 <h2>Schedule and payments</h2>
 <asp:Repeater runat="server" ID="rptSchedules">
-    <HeaderTemplate><table class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+    <HeaderTemplate><table class="tablesaw tablesaw-stack fees-schedule" data-tablesaw-mode="stack">
         <thead>
         <tr>
-            <td>Campus</td>
-            <td>Start date</td>
-            <td>Academic year end date</td>
-            <td>Program end date</td>
-            <td>Payment due (1st term)</td>
-            <td>U-Pass fee</td>
+            <th>Campus</th>
+            <th>Start date</th>
+            <th>Academic year end date</th>
+            <th>Program end date</th>
+            <th>Payment due (1st term)</th>
+            <th>U-Pass fee</th>
         </tr>
         </thead>
     </HeaderTemplate>
@@ -225,15 +239,14 @@
     </ItemTemplate>
     <FooterTemplate></table></FooterTemplate>
 </asp:Repeater>
-<div>
-    <a runat="server" id="lnkAcademicCalendar">View the NSCC Academic Calendar</a>
-</div>
 </asp:PlaceHolder>
 
 <asp:PlaceHolder runat="server" ID="plcNotesSchedule" Visible="false">
+<div class="fees-notes">
 <div><asp:Literal runat="server" ID="litNotesSchedule" /></div>
+</div>
 </asp:PlaceHolder>
 
-<asp:PlaceHolder runat="server" ID="plcProgramPageLink" Visible="false">
-<div><a runat="server" id="lnkProgramPage">View program page</a></div>
-</asp:PlaceHolder>
+<div>
+    <a runat="server" id="lnkAcademicCalendar">View the NSCC Academic Calendar</a>
+</div>

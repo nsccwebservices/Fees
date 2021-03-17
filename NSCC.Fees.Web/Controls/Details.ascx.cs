@@ -179,8 +179,12 @@ namespace NSCC.Fees.Web.Controls
 
                 #region "Textbooks"
 
-                litTextbooksDomestic.Text = (_program.AmountTextBooks ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
-                litTextbooksInternational.Text = litTextbooksDomestic.Text;
+                if (_program.AmountTextBooks.HasValue)
+                {
+                    litTextbooksDomestic.Text = _program.AmountTextBooks.Value.ToString(Business.Constants.CURRENCY_FORMAT);
+                    litTextbooksInternational.Text = litTextbooksDomestic.Text;
+                    plcTextbooks.Visible = true;
+                }
 
                 if (!String.IsNullOrEmpty(_program.NotesTextBooks))
                 {
@@ -192,8 +196,12 @@ namespace NSCC.Fees.Web.Controls
 
                 #region "Classroom/Portfolio supplies"
 
-                litSuppliesDomestic.Text = (_program.AmountSupplies ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
-                litSuppliesInternational.Text = litSuppliesDomestic.Text;
+                if (_program.AmountSupplies.HasValue)
+                {
+                    litSuppliesDomestic.Text = _program.AmountSupplies.Value.ToString(Business.Constants.CURRENCY_FORMAT);
+                    litSuppliesInternational.Text = litSuppliesDomestic.Text;
+                    plcSupplies.Visible = true;
+                }
 
                 #endregion
 
@@ -255,7 +263,6 @@ namespace NSCC.Fees.Web.Controls
                 {
  
                     plcColIntAmount.Visible = true;
-                    plcColCanadianDollars.Visible = true;
                     plcColIntTuition.Visible = true;
                     plcColIntCollegeServiceFee.Visible = true;
                     plcColIntHealthandDental.Visible = true;
