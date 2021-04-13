@@ -2,22 +2,22 @@
 
 <%@ Import Namespace="NSCC.Fees.Data" %>
 
-<h1><span id="lblProgram"><asp:Label ID="lblTitle" Runat="server" Text="Fees - {0}"></asp:Label></span></h1>
+<h1><asp:Label ID="lblProgramFees" Runat="server" Text="{0} Estimated Fees"></asp:Label><br /><span id="lblProgram"><asp:Label ID="lblTitle" Runat="server"></asp:Label></span></h1>
 
-<h2><asp:Label ID="lblProgramFees" Runat="server" Text="{0} Program Fees"></asp:Label></h2>
 
-<p>Global Intro copy - show on every program fees page.</p>
+
+<p>Tuition, fees and costs listed on this page are for <strong>planning purposes only</strong>. They do not represent final amounts owing and are in Canadian dollars (CDN).</p>
 
 <div>
-<asp:PlaceHolder runat="server" ID="plcProgramPageLink" Visible="false">For details about this program visit the <a runat="server" id="lnkProgramPage">program page</a>.</asp:PlaceHolder><asp:PlaceHolder runat="server" ID="plcInternationalText" Visible="false"> Not available to international students.</asp:PlaceHolder>
+<asp:PlaceHolder runat="server" ID="plcProgramPageLink" Visible="false">For details about this program visit the <a runat="server" id="lnkProgramPage">program page</a>.</asp:PlaceHolder><asp:PlaceHolder runat="server" ID="plcInternationalText" Visible="false"> International students are not eligible for this program.</asp:PlaceHolder>
 </div>
 
 <table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
         <th>Tuition and college fees</th>
-        <th>Domestic amount (Can$)</th>
-        <asp:PlaceHolder runat="server" ID="plcColIntAmount" Visible="false"><th>International amount (Can$)</th></asp:PlaceHolder>
+        <th>Domestic amount (CDN$)</th>
+        <asp:PlaceHolder runat="server" ID="plcColIntAmount" Visible="false"><th>International amount (CDN$)</th></asp:PlaceHolder>
     </tr>
     </thead>
     <tr>
@@ -34,28 +34,28 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcHealthAndDental" Visible="false">
     <tr>
-        <td>Student health &amp; dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info"><strong>Health &amp; Dental Notes</strong>If you already have these items...</span></td>
+        <td>Student health and dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/cost_and_financial_aid/health-and-dental-benefits.asp">student health and dental plan</a>.</span></td>
         <td><asp:Literal runat="server" ID="litHealthAndDentalDomestic" /></td>
        <asp:PlaceHolder runat="server" ID="plcColIntHealthandDental" Visible="false"><td><asp:Literal runat="server" ID="litHealthAndDentalInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcStudentAssociationFee" Visible="false">
     <tr>
-        <td>Student Association fee<span class="sa-fee-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">The Student Association fee should be adjusted based on your campus. Student Association (SA) Fee varies by campus - Check <a href="/admissions/cost_and_financial_aid/safees/index.asp">your campus fee</a> to confirm your exact amount.</span></td>
+        <td>Student Association fee<span class="sa-fee-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/cost_and_financial_aid/safees/index.asp">campus Student Association fees</a>.</span></td>
         <td><asp:Literal runat="server" ID="litStudentAssociationFeeDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntStudentAssociation" Visible="false"><td><asp:Literal runat="server" ID="litStudentAssociationFeeInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcUPass" Visible="false">
     <tr>
-        <td>U-Pass<span class="upass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="upass-info-tooltip tooltip-info"><strong>U-Pass Notes</strong>If you already have these items...</span></td>
+        <td>U-Pass<span class="upass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="upass-info-tooltip tooltip-info">The U-Pass fee applies to full-time students at Akerley, Institute of Technology and Ivany campuses, and is optional for eCampus students.</span></td>
         <td><asp:Literal runat="server" ID="litUPassDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntUPass" Visible="false"><td><asp:Literal runat="server" ID="litUPassInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcParkingPass" Visible="false">
     <tr>
-        <td>Parking pass</td>
+        <td>Parking pass<span class="parkingpass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="parkingpass-info-tooltip tooltip-info">This fee applies only if parking on NSCC property. If a parking pass isn't required, deduct this fee from your total.</td>
         <td><asp:Literal runat="server" ID="litParkingPassDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntParkingPass" Visible="false"><td><asp:Literal runat="server" ID="litParkingPassInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -73,11 +73,17 @@
         <asp:PlaceHolder runat="server" ID="plcColDomTotal" Visible="false"><td><asp:Literal runat="server" ID="litTotalInternational" /></td></asp:PlaceHolder>
     </tr>
     <tr class="fees-total-row">
-        <td>Payment (1st term)</td>
+        <td>Payment (1st term)<span class="paymentfirstterm-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="paymentfirstterm-info-tooltip tooltip-info">If you paid a non-refundable tuition deposit, subtract it from this total.</span></td>
         <td><asp:Literal runat="server" ID="litPaymentFirstTermDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntTotal" Visible="false"><td><asp:Literal runat="server" ID="litPaymentFirstTermInternational" /></td></asp:PlaceHolder>
     </tr>
 </table>
+
+<asp:PlaceHolder runat="server" ID="plcNotesPayment" Visible="false">
+<div class="fees-notes">
+<asp:Literal runat="server" ID="litNotesPayment" />
+</div>
+</asp:PlaceHolder>
 
 <asp:PlaceHolder runat="server" ID="plcNotesTuition" Visible="false">
 <div class="fees-notes">
@@ -96,7 +102,7 @@
     </tr>
     </thead>
     <tr>
-        <td><asp:Literal runat="server" ID="litCoop" Text="Co-op course tuition ({0}) - this is an academic course and students are required to pay course tuition for one unit."/></td>
+        <td><asp:Literal runat="server" ID="litCoop" /></td>
         <td><asp:Literal runat="server" ID="litCoopDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntCoop" Visible="false"><td><asp:Literal runat="server" ID="litCoopInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -136,7 +142,7 @@
 
 
 <asp:PlaceHolder runat="server" ID="plcSupplies" Visible="false">
-<table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
+<table class="tablesaw tablesaw-stack fees-3c fees-no-notes" data-tablesaw-mode="stack">
     <thead>
     <tr>
         <th>Classroom/Portfolio Supplies</th>
@@ -178,7 +184,7 @@
         </table>
     </FooterTemplate>
 </asp:Repeater>
-<p>Additional program costs generic message</p>
+<div class="fees-indented">These are estimated costs for items required for your program. If you already have any of these items, they may meet your program requirements.</div>
 </asp:PlaceHolder>
 
 <asp:PlaceHolder runat="server" ID="plcNotesCostItems" Visible="false">
@@ -204,16 +210,11 @@
     </tr>
 </table>
 
-<asp:PlaceHolder runat="server" ID="plcNotesPayment" Visible="false">
-<div class="fees-notes">
-<asp:Literal runat="server" ID="litNotesPayment" />
-</div>
-</asp:PlaceHolder>
-
-
-
 <asp:PlaceHolder runat="server" ID="plcSchedules" Visible="false">
 <h2>Schedule and payments</h2>
+<p>
+    Visit our <a runat="server" id="lnkAcademicCalendar">Academic Calendar</a> to see the full list of important dates.
+</p>
 <asp:Repeater runat="server" ID="rptSchedules">
     <HeaderTemplate><table class="tablesaw tablesaw-stack fees-schedule" data-tablesaw-mode="stack">
         <thead>
@@ -229,11 +230,11 @@
     </HeaderTemplate>
     <ItemTemplate>
         <tr>
-            <td><%# ((Schedule)Container.DataItem).Location.LongName %></td>
+            <td><%# ((Schedule)Container.DataItem).Location.ShortName %></td>
             <td><%# ((Schedule)Container.DataItem).StartDate.Value.ToString("MMM d, yyyy") %></td>
             <td><%# ((Schedule)Container.DataItem).AcademicYearEndDate.Value.ToString("MMM d, yyyy") %></td>
             <td><%# ((Schedule)Container.DataItem).ProgramEndDate.Value.ToString("MMM d, yyyy") %></td>
-            <td><%# ((Schedule)Container.DataItem).FirstPaymentDate.Value.ToString("MMM d, yyyy") %></td>
+            <td><%# ((Schedule)Container.DataItem).FirstPaymentDate.HasValue ? ((Schedule)Container.DataItem).FirstPaymentDate.Value.ToString("MMM d, yyyy") : "" %></td>
             <td><%# ((Schedule)Container.DataItem).HasUPass ? "Yes" : "No" %></td>
         </tr>
     </ItemTemplate>
@@ -247,6 +248,3 @@
 </div>
 </asp:PlaceHolder>
 
-<div>
-    <a runat="server" id="lnkAcademicCalendar">View the NSCC Academic Calendar</a>
-</div>

@@ -3,6 +3,8 @@
 <%@ Import Namespace="NSCC.Fees.Data"%>
 <%@ Import Namespace="NSCC.Fees.Business.Classes"%>
 
+<h2 id="top"><span id="lblTuitionDisplay"><asp:Literal runat="server" ID="litAcademicYear" Text="{0} Program Fees" /></span></h2>
+
 <div class="azBox" id="divAzBox">
     <div>
     <asp:Repeater ID="rptLetters" runat="server" EnableViewState="false">
@@ -14,15 +16,14 @@
 
 <asp:Repeater runat="server" ID="rptProgramList" OnItemDataBound="rptProgramList_ItemDataBound" EnableViewState="false">
     <ItemTemplate>
-        <h2 class="az-h2" id="<%# ((AlphaCount)Container.DataItem).Alphabet%>"><%# ((AlphaCount)Container.DataItem).Alphabet%></h2>
-        <div class="accordion">
+        <h3 class="az-h3" id="<%# ((AlphaCount)Container.DataItem).Alphabet%>"><%# ((AlphaCount)Container.DataItem).Alphabet%></h3>
         <asp:Repeater runat="server" ID="rptPrograms">
+            <HeaderTemplate><ul class="azWebCal"></HeaderTemplate>
             <ItemTemplate>
-                <a href="program.aspx?pfid=<%# ((Program)Container.DataItem).ProgramID%>"><%# ((Program)Container.DataItem).Name%></a>
+                <li><a href="program.aspx?pfid=<%# ((Program)Container.DataItem).ProgramID%>"><%# ((Program)Container.DataItem).Name%></a></li>
             </ItemTemplate>
-            <SeparatorTemplate><br /></SeparatorTemplate>
+            <FooterTemplate></ul></FooterTemplate>
         </asp:Repeater>
-        </div>
         <a class="top" href="#top">Top</a>
     </ItemTemplate>
 </asp:Repeater>

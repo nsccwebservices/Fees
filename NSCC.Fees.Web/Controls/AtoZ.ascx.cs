@@ -45,6 +45,12 @@ namespace NSCC.Fees.Web.Controls
 
                 this.rptProgramList.DataSource = lst;
                 this.rptProgramList.DataBind();
+
+                var program = programFees.FirstOrDefault();
+                if (program != null)
+                {
+                    litAcademicYear.Text = String.Format(litAcademicYear.Text, program.AcademicYear.Name);
+                }
             }
             catch (Exception ex)
             {

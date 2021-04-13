@@ -63,7 +63,7 @@ namespace NSCC.Fees.Web.Controls
                 //metadata - title
                 Page.Title = String.Concat(WebUtility.HtmlDecode(_program.Name), " | Fees | NSCC");
 
-                lblTitle.Text = String.Format(lblTitle.Text, _program.Name);
+                lblTitle.Text = _program.Name;
                 lblProgramFees.Text = String.Format(lblProgramFees.Text, _program.AcademicYear.Name);
 
                 litTuitionDomestic.Text = _program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? (_program.NonStandardTuitionDomestic ?? 0).ToString(Business.Constants.CURRENCY_FORMAT) : _program.Tuition.AmountDomestic.ToString(Business.Constants.CURRENCY_FORMAT);
@@ -113,16 +113,19 @@ namespace NSCC.Fees.Web.Controls
 
                 }
 
-                var amountUpass = 0;
-                if (_program.Schedules.Any(x => x.HasUPass))
+                var amountUpassDomestic = 0;
+                var amountUpassInternational = 0;
+
+                if (_program.Schedules.Where(x => x.IsPublished).Any(x => x.HasUPass))
                 {
                     CollegeFee upass = _repository.GetCollegeFee(Config.Default.AcademicYear, Business.Constants.UPASS);
                     if (upass != null)
                     {
                         plcUPass.Visible = true;
-                        amountUpass = upass.AmountDomestic;
-                        litUPassDomestic.Text = upass.AmountDomestic.ToString();
-                        litUPassInternational.Text = upass.AmountInternational.ToString();
+                        amountUpassDomestic = upass.AmountDomestic;
+                        amountUpassInternational = upass.AmountInternational;
+                        litUPassDomestic.Text = amountUpassDomestic.ToString();
+                        litUPassInternational.Text = amountUpassInternational.ToString();
                     }
                 }
 
@@ -144,14 +147,22 @@ namespace NSCC.Fees.Web.Controls
                 #endregion
 
                 #region "Total of Tuition + College Fees"
-                var totalDomestic = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionDomestic ?? 0 : _program.Tuition.AmountDomestic) + CalculateCollegeFeesDomestic();
-                var totalInternational = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionInternational ?? 0 : _program.Tuition.AmountInternational) + CalculateCollegeFeesInternational();
+
+                var collegeFeesDomestic = CalculateCollegeFeesDomestic();
+                var collegeFeesInternational = CalculateCollegeFeesInternational();
+
+                var totalDomestic = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionDomestic ?? 0 : _program.Tuition.AmountDomestic) + amountUpassDomestic + collegeFeesDomestic;
+                var totalInternational = (_program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? _program.NonStandardTuitionInternational ?? 0 : _program.Tuition.AmountInternational) + amountUpassInternational + collegeFeesInternational;
 
                 litTotalDomestic.Text = totalDomestic.ToString(Business.Constants.CURRENCY_FORMAT);
                 litTotalInternational.Text = totalInternational.ToString(Business.Constants.CURRENCY_FORMAT);
 
-                litPaymentFirstTermDomestic.Text = (_program.FirstTermTuitionDomestic ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
-                litPaymentFirstTermInternational.Text = (_program.FirstTermTuitionInternational ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
+
+                //Payment First Term Domestic = First Term Tuition Domestic + College Fees Domestic + Co - op fee Domestic (if mandatory) + U-Pass amount (if any Schedule has UPass checked)
+                litPaymentFirstTermDomestic.Text = ((_program.FirstTermTuitionDomestic ?? 0) + collegeFeesDomestic + amountUpassDomestic + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopDomestic ?? 0 : 0)).ToString(Business.Constants.CURRENCY_FORMAT);
+
+                //PaymentFirstTermInternational = First Term Tuition International + College Fees Domestic + Co - op fee International (if mandatory) + U-Pass amount (if any Schedule has UPass checked)
+                litPaymentFirstTermInternational.Text = ((_program.FirstTermTuitionInternational ?? 0) + collegeFeesInternational + amountUpassInternational + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopInternational ?? 0 : 0)).ToString(Business.Constants.CURRENCY_FORMAT);
 
                 if (!String.IsNullOrEmpty(_program.NotesTuitionCollegeFees))
                 {
@@ -165,7 +176,7 @@ namespace NSCC.Fees.Web.Controls
                 if (_program.CoopTypeID != Business.Constants.COOP_NONE)
                 {
                     plcCoop.Visible = true;
-                    litCoop.Text = String.Format(litCoop.Text, _program.CoopTypeID == Business.Constants.COOP_MANDATORY ? "mandatory" : "optional");
+                    litCoop.Text = _program.CoopTypeID == Business.Constants.COOP_MANDATORY ? Config.Default.LabelCoopMandatory : Config.Default.LabelCoopOptional;
                     litCoopDomestic.Text = (_program.AmountCoopDomestic ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
                     litCoopInternational.Text = (_program.AmountCoopInternational ?? 0).ToString(Business.Constants.CURRENCY_FORMAT);
                 }
@@ -221,8 +232,8 @@ namespace NSCC.Fees.Web.Controls
 
                 #region "Total Cost section"
                 // Tuition and college fees + U-Pass amount (if any Schedule has UPass checked) + co-op (if mandatory) + textbooks + additional program costs + classroom/portfolio supplies"
-                litTotalCostDomestic.Text = (totalDomestic + amountUpass + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopDomestic ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + (_program.AmountSupplies ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
-                litTotalCostInternational.Text = (totalInternational + amountUpass +  (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopInternational ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + (_program.AmountSupplies ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
+                litTotalCostDomestic.Text = (totalDomestic + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopDomestic ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + (_program.AmountSupplies ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
+                litTotalCostInternational.Text = (totalInternational + (_program.CoopTypeID == Business.Constants.COOP_MANDATORY ? _program.AmountCoopInternational ?? 0 : 0) + (_program.AmountTextBooks ?? 0) + (_program.AmountSupplies ?? 0) + _program.CostItems.Sum(item => item.Cost)).ToString(Business.Constants.CURRENCY_FORMAT);
 
                 if (!String.IsNullOrEmpty(_program.NotesPayment))
                 {

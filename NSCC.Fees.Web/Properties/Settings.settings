@@ -11,5 +11,11 @@
     <Setting Name="AcademicCalendarURL" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://www.nscc.ca/learning_programs/academic_schedule/default.aspx</Value>
     </Setting>
+    <Setting Name="LabelCoopMandatory" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Co-op course tuition &lt;strong&gt;(mandatory)&lt;/strong&gt; - this is an academic course and students are required to pay course tuition for one unit.</Value>
+    </Setting>
+    <Setting Name="LabelCoopOptional" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Co-op course tuition &lt;strong&gt;(optional)&lt;/strong&gt; - this is an optional academic course and if enrolled, students are required to pay course tuition for one unit.</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

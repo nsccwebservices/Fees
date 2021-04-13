@@ -50,5 +50,26 @@ namespace NSCC.Fees.Web.Properties {
                 return ((string)(this["AcademicCalendarURL"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Co-op course tuition <strong>(mandatory)</strong> - this is an academic course an" +
+            "d students are required to pay course tuition for one unit.")]
+        public string LabelCoopMandatory {
+            get {
+                return ((string)(this["LabelCoopMandatory"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Co-op course tuition <strong>(optional)</strong> - this is an optional academic c" +
+            "ourse and if enrolled, students are required to pay course tuition for one unit." +
+            "")]
+        public string LabelCoopOptional {
+            get {
+                return ((string)(this["LabelCoopOptional"]));
+            }
+        }
     }
 }

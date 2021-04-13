@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-	<link href="https://www.nscc.ca/inc/css/styles.css?v=2.4" rel="stylesheet"/>
+	<link href="https://www.nscc.ca/inc/css/styles.css?v=2.5" rel="stylesheet"/>
     <link href="https://www.nscc.ca/inc/css/tablesaw.stackonly.css?v=1.0" rel="stylesheet"/>
     <link href="https://www.nscc.ca/inc/css/jquery.qtip2.1.1.min.css" rel="stylesheet" />
     <link href="https://www.nscc.ca/inc/css/programs.css" rel="stylesheet" />
