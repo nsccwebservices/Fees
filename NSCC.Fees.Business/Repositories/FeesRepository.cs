@@ -113,20 +113,19 @@ namespace NSCC.Fees.Business
         {
             try
             {
-                if (collegeFees.Count() > 0)
+                //remove all associated college fees for the Program
+                foreach (CollegeFee fee in program.CollegeFees.ToList())
                 {
-                    foreach (CollegeFee fee in program.CollegeFees.ToList())
-                    {
-                        program.CollegeFees.Remove(fee);
-                    }
+                    program.CollegeFees.Remove(fee);
+                }
 
-                    foreach (int i in collegeFees)
+                // now associate any college fees passed in for the is Program
+                foreach (int i in collegeFees)
+                {
+                    var cf = _context.CollegeFees.FirstOrDefault(s => s.CollegeFeeID == i);
+                    if (cf != null)
                     {
-                        var cf = _context.CollegeFees.FirstOrDefault(s => s.CollegeFeeID == i);
-                        if (cf != null)
-                        {
-                            program.CollegeFees.Add(cf);
-                        }
+                        program.CollegeFees.Add(cf);
                     }
                 }
            
