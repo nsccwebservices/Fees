@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NSCC.Fees.Sitemap.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OutputPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Fees.xml</Value>
+    </Setting>
+    <Setting Name="AcademicYear" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">2021</Value>
+    </Setting>
+    <Setting Name="FeesDetailsLink" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://www.nscc.ca/admissions/cost_and_financial_aid/programfees/program.aspx?pfid={0}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
