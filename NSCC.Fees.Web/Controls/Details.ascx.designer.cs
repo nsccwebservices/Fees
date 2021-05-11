@@ -13,6 +13,15 @@ namespace NSCC.Fees.Web.Controls {
     public partial class Details {
         
         /// <summary>
+        /// plcFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcFound;
+        
+        /// <summary>
         /// lblProgramFees control.
         /// </summary>
         /// <remarks>
@@ -677,5 +686,14 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesSchedule;
+        
+        /// <summary>
+        /// plcNotFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcNotFound;
     }
 }

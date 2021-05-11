@@ -2,6 +2,10 @@
 
 <%@ Import Namespace="NSCC.Fees.Data" %>
 
+
+<asp:PlaceHolder runat="server" ID="plcFound">
+
+
 <h1><asp:Label ID="lblProgramFees" Runat="server" Text="{0} Estimated Fees"></asp:Label><br /><span id="lblProgram"><asp:Label ID="lblTitle" Runat="server"></asp:Label></span></h1>
 
 
@@ -41,7 +45,7 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcStudentAssociationFee" Visible="false">
     <tr>
-        <td>Student Association fee<span class="sa-fee-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/cost_and_financial_aid/safees/index.asp">campus Student Association fees</a>.</span></td>
+        <td>Student Association fee<span class="sa-fee-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/cost_and_financial_aid/safees/index.asp">campus Student Association fees</a>.</span></td>
         <td><asp:Literal runat="server" ID="litStudentAssociationFeeDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntStudentAssociation" Visible="false"><td><asp:Literal runat="server" ID="litStudentAssociationFeeInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -73,7 +77,7 @@
         <asp:PlaceHolder runat="server" ID="plcColDomTotal" Visible="false"><td><asp:Literal runat="server" ID="litTotalInternational" /></td></asp:PlaceHolder>
     </tr>
     <tr class="fees-total-row">
-        <td>Payment (1st term)<span class="paymentfirstterm-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="paymentfirstterm-info-tooltip tooltip-info">If you paid a non-refundable tuition deposit, subtract it from this total.</span></td>
+        <td>Payment (1st term)<span class="paymentfirstterm-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="paymentfirstterm-info-tooltip tooltip-info">If you paid a non-refundable tuition deposit, subtract it from this total.</span></td>
         <td><asp:Literal runat="server" ID="litPaymentFirstTermDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntTotal" Visible="false"><td><asp:Literal runat="server" ID="litPaymentFirstTermInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -248,3 +252,30 @@
 </div>
 </asp:PlaceHolder>
 
+</asp:PlaceHolder>
+
+<asp:Placeholder runat="server" ID="plcNotFound">
+<h1 id="404Hdr">Page Not Found (404 Error)</h1>
+<p>We're sorry, the page you're looking for cannot be found.</p>
+<p>The link may be incorrect or outdated, or the page might have moved.</p>
+<p><a href="/default.aspx">nscc.ca homepage</a> | <a href="/contact_us/default.aspx">Contact us to report a problem</a></p>
+
+<!-- Google CSE Search Box Begins  -->
+  <script>
+   window.onload = function()
+   { 
+   // header search box
+   var searchBoxHdr =  document.getElementById("gsc-i-id1");
+   searchBoxHdr.placeholder="Search nscc.ca";
+   searchBoxHdr.title="Search nscc.ca";
+   // search page search box
+   var searchBox =  document.getElementById("gsc-i-id2");
+   searchBox.placeholder="Search nscc.ca";
+   searchBox.title="Search nscc.ca";
+   }
+  </script>
+<div id="search-box">
+    <div class="gcse-searchbox-only" data-resultsUrl="/search/index.asp"></div>
+</div>
+<!-- Google CSE Search Box Ends -->
+</asp:Placeholder>

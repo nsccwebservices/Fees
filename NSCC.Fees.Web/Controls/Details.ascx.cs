@@ -50,6 +50,8 @@ namespace NSCC.Fees.Web.Controls
 
             if (_program != null && _program.IsPublished)
             {
+                plcFound.Visible = true;
+                plcNotFound.Visible = false;
 
                 //metadata - description
                 if (!String.IsNullOrEmpty(Config.Default.MetaDescription))
@@ -218,7 +220,7 @@ namespace NSCC.Fees.Web.Controls
 
                 #region "Cost Items - Repeater and Notes"
 
-                rptCostItems.DataSource = _program.CostItems;
+                rptCostItems.DataSource = _program.CostItems.OrderBy(p => p.Name);
                 rptCostItems.DataBind();
                 plcCostItems.Visible = _program.CostItems.Count > 0;
 
@@ -244,7 +246,7 @@ namespace NSCC.Fees.Web.Controls
 
                 #region "Schedules - Repeater and Notes"
 
-                var schedules = _program.Schedules.Where(p => p.IsPublished).ToList();
+                var schedules = _program.Schedules.Where(p => p.IsPublished).OrderBy(p => p.Location.ShortName).ThenBy(p => p.StartDate).ThenBy(p => p.AcademicYearEndDate).ToList();
                 rptSchedules.DataSource = schedules;
                 rptSchedules.DataBind();
 
@@ -299,6 +301,12 @@ namespace NSCC.Fees.Web.Controls
                 {
                    plcInternationalText.Visible = true;
                 }
+            }
+
+            else
+            {
+                plcFound.Visible = false;
+                plcNotFound.Visible = true;
             }
         }
 
