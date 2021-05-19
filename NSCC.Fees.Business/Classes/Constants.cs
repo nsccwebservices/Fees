@@ -17,6 +17,7 @@ namespace NSCC.Fees.Business
 
         public const string NON_STANDARD_TUITION = "NON_STANDARD";
         public const string CURRENCY_FORMAT = "C0";
+        public const string COMMA_FORMAT = "{0:n0}";
 
         public const int COOP_NONE = 1;
         public const int COOP_MANDATORY = 2;

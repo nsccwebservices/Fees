@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Details.ascx.cs" Inherits="NSCC.Fees.Web.Controls.Details" %>
 
 <%@ Import Namespace="NSCC.Fees.Data" %>
-
+<%@ Import Namespace="NSCC.Fees.Business" %>
 
 <asp:PlaceHolder runat="server" ID="plcFound">
 
@@ -175,8 +175,8 @@
     <ItemTemplate>
         <tr>
             <td><%# ((CostItem)Container.DataItem).Name %></td>
-            <td><%# ((CostItem)Container.DataItem).Cost.ToString() %></td>
-            <asp:PlaceHolder runat="server" ID="plcIntCostItems"><td><%# ((CostItem)Container.DataItem).Cost.ToString() %></td></asp:PlaceHolder>
+            <td><%# String.Format(Constants.COMMA_FORMAT, ((CostItem)Container.DataItem).Cost) %></td>
+            <asp:PlaceHolder runat="server" ID="plcIntCostItems"><td><%# String.Format(Constants.COMMA_FORMAT, ((CostItem)Container.DataItem).Cost) %></td></asp:PlaceHolder>
         </tr>
     </ItemTemplate>
     <FooterTemplate>

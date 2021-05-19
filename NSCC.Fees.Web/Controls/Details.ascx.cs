@@ -79,13 +79,13 @@ namespace NSCC.Fees.Web.Controls
                     plcCollegeServiceFee.Visible = true;
                     if (_program.IsPartTime ?? false)
                     {
-                        litCollegeServiceFeeDomestic.Text = ((int)Math.Ceiling((decimal)collegeService.AmountDomestic / 2)).ToString();
-                        litCollegeServiceFeeInternational.Text = ((int)Math.Ceiling((decimal)collegeService.AmountInternational / 2)).ToString();
+                        litCollegeServiceFeeDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, (int)Math.Ceiling((decimal)collegeService.AmountDomestic / 2));
+                        litCollegeServiceFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, (int)Math.Ceiling((decimal)collegeService.AmountInternational / 2));
                     }
                     else
                     {
-                        litCollegeServiceFeeDomestic.Text = collegeService.AmountDomestic.ToString();
-                        litCollegeServiceFeeInternational.Text = collegeService.AmountInternational.ToString();
+                        litCollegeServiceFeeDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, collegeService.AmountDomestic);
+                        litCollegeServiceFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, collegeService.AmountInternational);
                     }
 
                 }
@@ -94,8 +94,8 @@ namespace NSCC.Fees.Web.Controls
                 if (healthAndDental != null)
                 {
                     plcHealthAndDental.Visible = true;
-                    litHealthAndDentalDomestic.Text = healthAndDental.AmountDomestic.ToString();
-                    litHealthAndDentalInternational.Text = healthAndDental.AmountInternational.ToString();
+                    litHealthAndDentalDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, healthAndDental.AmountDomestic);
+                    litHealthAndDentalInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, healthAndDental.AmountInternational);
                 }
 
                 CollegeFee studentAssociation = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.STUDENT_ASSOCIATION);
@@ -104,13 +104,13 @@ namespace NSCC.Fees.Web.Controls
                     plcStudentAssociationFee.Visible = true;
                     if (_program.IsPartTime ?? false)
                     {
-                        litStudentAssociationFeeDomestic.Text = ((int)Math.Ceiling((decimal)studentAssociation.AmountDomestic / 2)).ToString();
-                        litStudentAssociationFeeInternational.Text = ((int)Math.Ceiling((decimal)studentAssociation.AmountInternational / 2 )).ToString();
+                        litStudentAssociationFeeDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, (int)Math.Ceiling((decimal)studentAssociation.AmountDomestic / 2));
+                        litStudentAssociationFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, (int)Math.Ceiling((decimal)studentAssociation.AmountInternational / 2 ));
                     }
                     else
                     {
-                        litStudentAssociationFeeDomestic.Text = studentAssociation.AmountDomestic.ToString();
-                        litStudentAssociationFeeInternational.Text = studentAssociation.AmountInternational.ToString();
+                        litStudentAssociationFeeDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, studentAssociation.AmountDomestic);
+                        litStudentAssociationFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, studentAssociation.AmountInternational);
                     }
 
                 }
@@ -126,8 +126,8 @@ namespace NSCC.Fees.Web.Controls
                         plcUPass.Visible = true;
                         amountUpassDomestic = upass.AmountDomestic;
                         amountUpassInternational = upass.AmountInternational;
-                        litUPassDomestic.Text = amountUpassDomestic.ToString();
-                        litUPassInternational.Text = amountUpassInternational.ToString();
+                        litUPassDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, amountUpassDomestic);
+                        litUPassInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, amountUpassInternational);
                     }
                 }
 
@@ -135,14 +135,14 @@ namespace NSCC.Fees.Web.Controls
                 if (parkingPass != null)
                 {
                     plcParkingPass.Visible = true;
-                    litParkingPassDomestic.Text = parkingPass.AmountDomestic.ToString();
-                    litParkingPassInternational.Text = parkingPass.AmountInternational.ToString();
+                    litParkingPassDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, parkingPass.AmountDomestic);
+                    litParkingPassInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, parkingPass.AmountInternational);
                 }
 
                 CollegeFee isf = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.INTERNATIONAL_STUDENT_FEE);
                 if (isf != null && (_program.IsInternationalOffering ?? false))
                 {
-                    litInternationalStudentFeeInternational.Text = isf.AmountInternational.ToString();
+                    litInternationalStudentFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, isf.AmountInternational);
                     plcInternationalStudentFee.Visible = true;
                 }
 
