@@ -181,7 +181,7 @@
     </ItemTemplate>
     <FooterTemplate>
         <tr class="fees-total-row">
-            <td>Total (HST not incuded)</td>
+            <td>Total (HST not included)</td>
             <td><asp:Literal runat="server" ID="litCostItemsTotalDomestic" /></td>
             <asp:PlaceHolder runat="server" ID="plcIntColCostItemsTotal"><td><asp:Literal runat="server" ID="litCostItemsTotalInternational" /></td></asp:PlaceHolder>
         </tr>
