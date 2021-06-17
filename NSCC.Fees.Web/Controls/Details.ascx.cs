@@ -90,13 +90,34 @@ namespace NSCC.Fees.Web.Controls
 
                 }
 
-                CollegeFee healthAndDental = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.HEALTH_DENTAL);
-                if (healthAndDental != null)
+                CollegeFee healthAndDentalDomestic = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.HEALTH_DENTAL);
+                CollegeFee healthAndDentalInternational = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.HEALTH_DENTAL_INTERNATIONAL);
+
+                if (healthAndDentalDomestic != null)
                 {
-                    plcHealthAndDental.Visible = true;
-                    litHealthAndDentalDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, healthAndDental.AmountDomestic);
-                    litHealthAndDentalInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, healthAndDental.AmountInternational);
+                    litHealthAndDentalDomestic.Text = String.Format(Business.Constants.COMMA_FORMAT, healthAndDentalDomestic.AmountDomestic);
                 }
+
+                if (healthAndDentalInternational != null)
+                {
+                    litHealthAndDentalInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, healthAndDentalInternational.AmountInternational);
+                }
+
+                // if just international dental fee is checked in admin then we'll show "--" for the domesticfee otherwise it's blank
+                if (healthAndDentalDomestic != null && healthAndDentalInternational == null)
+                {
+                    litHealthAndDentalInternational.Text = "--";
+                }
+
+                // if just domestic dental fee is checked in admin then we'll show "--" for the international fee otherwise it's blank if other international college fees are checked in admin
+                if (healthAndDentalInternational != null && healthAndDentalDomestic == null)
+                {
+                    litHealthAndDentalDomestic.Text = "--";
+                }
+
+
+                plcHealthAndDental.Visible = (healthAndDentalDomestic != null || healthAndDentalInternational != null);
+
 
                 CollegeFee studentAssociation = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.STUDENT_ASSOCIATION);
                 if (studentAssociation != null)
@@ -142,8 +163,16 @@ namespace NSCC.Fees.Web.Controls
                 CollegeFee isf = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.INTERNATIONAL_STUDENT_FEE);
                 if (isf != null && (_program.IsInternationalOffering ?? false))
                 {
-                    litInternationalStudentFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, isf.AmountInternational);
                     plcInternationalStudentFee.Visible = true;
+
+                    if (_program.IsPartTime ?? false)
+                    {
+                        litInternationalStudentFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, (int)Math.Ceiling((decimal)isf.AmountInternational / 2));
+                    }
+                    else
+                    {
+                        litInternationalStudentFeeInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, isf.AmountInternational);
+                    }
                 }
 
                 #endregion
@@ -403,6 +432,7 @@ namespace NSCC.Fees.Web.Controls
 
                         case Business.Constants.COLLEGE_SERVICE:
                         case Business.Constants.STUDENT_ASSOCIATION:
+                        case Business.Constants.INTERNATIONAL_STUDENT_FEE:
 
                             sum += (int)Math.Ceiling((decimal)fee.AmountInternational / 2);
 

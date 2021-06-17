@@ -38,7 +38,7 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcHealthAndDental" Visible="false">
     <tr>
-        <td>Student health and dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/cost_and_financial_aid/health-and-dental-benefits.asp">student health and dental plan</a>.</span></td>
+        <td>Student health and dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to all International and/or full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/cost_and_financial_aid/health-and-dental-benefits.asp">student health and dental plan</a>.</span></td>
         <td><asp:Literal runat="server" ID="litHealthAndDentalDomestic" /></td>
        <asp:PlaceHolder runat="server" ID="plcColIntHealthandDental" Visible="false"><td><asp:Literal runat="server" ID="litHealthAndDentalInternational" /></td></asp:PlaceHolder>
     </tr>

@@ -11,6 +11,7 @@ namespace NSCC.Fees.Business
         public const string UPASS = "UPASS";
         public const string PARKING_PASS = "PARKING_PASS";
         public const string HEALTH_DENTAL = "HEALTH_DENTAL";
+        public const string HEALTH_DENTAL_INTERNATIONAL = "HEALTH_DENTAL_INTERNATIONAL";
         public const string STUDENT_ASSOCIATION = "STUDENT_ASSOCIATION";
         public const string COLLEGE_SERVICE = "COLLEGE_SERVICE";
         public const string INTERNATIONAL_STUDENT_FEE = "INTERNATIONAL_STUDENT_FEE";
