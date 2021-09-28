@@ -24,6 +24,5 @@
             </ItemTemplate>
             <FooterTemplate></ul></FooterTemplate>
         </asp:Repeater>
-        <a class="top" href="#top">Top</a>
     </ItemTemplate>
 </asp:Repeater>
