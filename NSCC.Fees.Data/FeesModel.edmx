@@ -12,6 +12,10 @@
           <Property Name="AcademicYearID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="FirstTermPaymentMultiplierDomestic" Type="float" Nullable="false" />
+          <Property Name="FirstTermPaymentMultiplierInternational" Type="float" Nullable="false" />
+          <Property Name="UnitBasedTuitionAmountDomestic" Type="int" Nullable="false" />
+          <Property Name="UnitBasedTuitionAmountInternational" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CollegeFee">
           <Key>
@@ -371,6 +375,10 @@
           <NavigationProperty Name="CollegeFees" Relationship="FeesModel.FK_CollegeFee_AcademicYear" FromRole="AcademicYear" ToRole="CollegeFee" />
           <NavigationProperty Name="Programs" Relationship="FeesModel.FK_Program_AcademicYear" FromRole="AcademicYear" ToRole="Program" />
           <NavigationProperty Name="Tuitions" Relationship="FeesModel.FK_Tuition_AcademicYear" FromRole="AcademicYear" ToRole="Tuition" />
+          <Property Name="FirstTermPaymentMultiplierDomestic" Type="Double" Nullable="false" />
+          <Property Name="FirstTermPaymentMultiplierInternational" Type="Double" Nullable="false" />
+          <Property Name="UnitBasedTuitionAmountDomestic" Type="Int32" Nullable="false" />
+          <Property Name="UnitBasedTuitionAmountInternational" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CollegeFee">
           <Key>
@@ -598,6 +606,10 @@
           <EntitySetMapping Name="AcademicYears">
             <EntityTypeMapping TypeName="FeesModel.AcademicYear">
               <MappingFragment StoreEntitySet="AcademicYear">
+                <ScalarProperty Name="UnitBasedTuitionAmountInternational" ColumnName="UnitBasedTuitionAmountInternational" />
+                <ScalarProperty Name="UnitBasedTuitionAmountDomestic" ColumnName="UnitBasedTuitionAmountDomestic" />
+                <ScalarProperty Name="FirstTermPaymentMultiplierInternational" ColumnName="FirstTermPaymentMultiplierInternational" />
+                <ScalarProperty Name="FirstTermPaymentMultiplierDomestic" ColumnName="FirstTermPaymentMultiplierDomestic" />
                 <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="AcademicYearID" ColumnName="AcademicYearID" />

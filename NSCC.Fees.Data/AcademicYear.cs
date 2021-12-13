@@ -25,6 +25,10 @@ namespace NSCC.Fees.Data
         public int AcademicYearID { get; set; }
         public string Name { get; set; }
         public bool IsPublished { get; set; }
+        public double FirstTermPaymentMultiplierDomestic { get; set; }
+        public double FirstTermPaymentMultiplierInternational { get; set; }
+        public int UnitBasedTuitionAmountDomestic { get; set; }
+        public int UnitBasedTuitionAmountInternational { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CollegeFee> CollegeFees { get; set; }
