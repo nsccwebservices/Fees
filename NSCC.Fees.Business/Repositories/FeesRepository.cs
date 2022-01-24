@@ -415,6 +415,19 @@ namespace NSCC.Fees.Business
 
 
         #region "Tuition"
+        public IEnumerable<Tuition> GetTuitions()
+        {
+            try
+            {
+                var entities = _context.Tuitions;
+                return entities.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
         public IEnumerable<Tuition> GetTuitions(int acadyear)
         {
             try
@@ -452,6 +465,19 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
+        public Tuition GetTuition(string lookupName)
+        {
+            try
+            {
+                var entities = _context.Tuitions;
+                return entities.Where(p => String.Compare(p.LookupName, lookupName, false) == 0).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
         public void AddTuition(Tuition entity)
         {
@@ -538,6 +564,19 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
+        public CollegeFee GetCollegeFee(string lookupName)
+        {
+            try
+            {
+                var entities = _context.CollegeFees;
+                return entities.Where(p => String.Compare(p.LookupName, lookupName, false) == 0 ).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void UpdateCollegeFee(CollegeFee entity)
         {
             try

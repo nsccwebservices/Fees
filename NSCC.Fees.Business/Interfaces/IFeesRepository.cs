@@ -36,6 +36,7 @@ namespace NSCC.Fees.Business
         IEnumerable<CollegeFee> GetCollegeFees(int acadyear, bool includeUPass);
         CollegeFee GetCollegeFee(int collegeFeeID);
         CollegeFee GetCollegeFee(int acadyear, string lookupName);
+        CollegeFee GetCollegeFee(string lookupName);
         void UpdateCollegeFee(CollegeFee entity);
 
         IEnumerable<CostItem> GetCostItems(int programID);
@@ -44,9 +45,11 @@ namespace NSCC.Fees.Business
         void UpdateCostItem(CostItem entity);
         void DeleteCostItem(int costItemID);
 
+        IEnumerable<Tuition> GetTuitions();
         IEnumerable<Tuition> GetTuitions(int acadyear);
         Tuition GetTuition(int tuitionID);
         Tuition GetTuition(int acadyear, string lookupName);
+        Tuition GetTuition(string lookupName);
         void AddTuition(Tuition entity);
         void UpdateTuition(Tuition entity);
         void DeleteTuition(int tuitionID);
