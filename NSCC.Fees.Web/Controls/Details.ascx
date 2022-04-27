@@ -38,14 +38,14 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcHealthAndDental" Visible="false">
     <tr>
-        <td>Student health and dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to all International and/or full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/cost_and_financial_aid/health-and-dental-benefits.asp">student health and dental plan</a>.</span></td>
+        <td>Student health and dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to all International and/or full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/tuition-fees-and-costs/health-and-dental-benefits.asp">student health and dental plan</a>.</span></td>
         <td><asp:Literal runat="server" ID="litHealthAndDentalDomestic" /></td>
        <asp:PlaceHolder runat="server" ID="plcColIntHealthandDental" Visible="false"><td><asp:Literal runat="server" ID="litHealthAndDentalInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcStudentAssociationFee" Visible="false">
     <tr>
-        <td>Student Association fee<span class="sa-fee-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/cost_and_financial_aid/safees/index.asp">campus Student Association fees</a>.</span></td>
+        <td>Student Association fee<span class="sa-fee-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/tuition-fees-and-costs/safees.asp">campus Student Association fees</a>.</span></td>
         <td><asp:Literal runat="server" ID="litStudentAssociationFeeDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntStudentAssociation" Visible="false"><td><asp:Literal runat="server" ID="litStudentAssociationFeeInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -59,7 +59,7 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcParkingPass" Visible="false">
     <tr>
-        <td>Parking pass<span class="parkingpass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="parkingpass-info-tooltip tooltip-info">This fee applies only if parking on NSCC property. If a parking pass isn't required, deduct this fee from your total.</td>
+        <td>Parking pass<span class="parkingpass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="parkingpass-info-tooltip tooltip-info">This fee applies only if parking on NSCC property. If a parking pass isn't required, deduct this fee from your total.</span></td>
         <td><asp:Literal runat="server" ID="litParkingPassDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntParkingPass" Visible="false"><td><asp:Literal runat="server" ID="litParkingPassInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -258,7 +258,7 @@
 <h1 id="404Hdr">Page Not Found (404 Error)</h1>
 <p>We're sorry, the page you're looking for cannot be found.</p>
 <p>The link may be incorrect or outdated, or the page might have moved.</p>
-<p><a href="/default.aspx">nscc.ca homepage</a> | <a href="/contact_us/default.aspx">Contact us to report a problem</a></p>
+<p><a href="/default.aspx">nscc.ca homepage</a> | <a href="/contact/default.aspx">Contact us to report a problem</a></p>
 
 <!-- Google CSE Search Box Begins  -->
   <script>
