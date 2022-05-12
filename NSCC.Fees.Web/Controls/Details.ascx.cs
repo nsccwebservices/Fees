@@ -175,6 +175,15 @@ namespace NSCC.Fees.Web.Controls
                     }
                 }
 
+                CollegeFee vhcf = _program.CollegeFees.FirstOrDefault(x => x.LookupName == Business.Constants.VIRTUAL_HEALTHCARE_FEE);
+                if (vhcf != null)
+                {
+                    plcVirtualHealthcare.Visible = true;
+                    litVirtualHealthcare.Text = String.Format(Business.Constants.COMMA_FORMAT, vhcf.AmountDomestic);
+                    litVirtualHealthcareInternational.Text = String.Format(Business.Constants.COMMA_FORMAT, vhcf.AmountInternational);
+                }
+
+
                 #endregion
 
                 #region "Total of Tuition + College Fees"
@@ -311,6 +320,7 @@ namespace NSCC.Fees.Web.Controls
                     plcColIntStudentAssociation.Visible = true;
                     plcColIntUPass.Visible = true;
                     plcColIntParkingPass.Visible = true;
+                    plcColIntVirtualHealthcare.Visible = true;
                     plcColDomTotal.Visible = true;
                     plcColIntTotal.Visible = true;
 

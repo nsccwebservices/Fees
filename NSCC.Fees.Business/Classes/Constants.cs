@@ -15,6 +15,7 @@ namespace NSCC.Fees.Business
         public const string STUDENT_ASSOCIATION = "STUDENT_ASSOCIATION";
         public const string COLLEGE_SERVICE = "COLLEGE_SERVICE";
         public const string INTERNATIONAL_STUDENT_FEE = "INTERNATIONAL_STUDENT_FEE";
+        public const string VIRTUAL_HEALTHCARE_FEE = "VIRTUAL_HEALTHCARE_FEE";
 
         public const string NON_STANDARD_TUITION = "NON_STANDARD";
         public const string CURRENCY_FORMAT = "C0";
