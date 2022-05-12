@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NSCC.Fees.Web.Controls {
-    
-    
-    public partial class Details {
-        
+namespace NSCC.Fees.Web.Controls
+{
+
+
+    public partial class Details
+    {
+
         /// <summary>
         /// plcFound control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcFound;
-        
+
         /// <summary>
         /// lblProgramFees control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProgramFees;
-        
+
         /// <summary>
         /// lblTitle control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTitle;
-        
+
         /// <summary>
         /// plcProgramPageLink control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcProgramPageLink;
-        
+
         /// <summary>
         /// lnkProgramPage control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkProgramPage;
-        
+
         /// <summary>
         /// plcInternationalText control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcInternationalText;
-        
+
         /// <summary>
         /// plcColIntAmount control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntAmount;
-        
+
         /// <summary>
         /// litTuitionDomestic control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTuitionDomestic;
-        
+
         /// <summary>
         /// plcColIntTuition control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntTuition;
-        
+
         /// <summary>
         /// litTuitionInternational control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTuitionInternational;
-        
+
         /// <summary>
         /// plcCollegeServiceFee control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcCollegeServiceFee;
-        
+
         /// <summary>
         /// litCollegeServiceFeeDomestic control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litCollegeServiceFeeDomestic;
-        
+
         /// <summary>
         /// plcColIntCollegeServiceFee control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntCollegeServiceFee;
-        
+
         /// <summary>
         /// litCollegeServiceFeeInternational control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litCollegeServiceFeeInternational;
-        
+
         /// <summary>
         /// plcHealthAndDental control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcHealthAndDental;
-        
+
         /// <summary>
         /// litHealthAndDentalDomestic control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litHealthAndDentalDomestic;
-        
+
         /// <summary>
         /// plcColIntHealthandDental control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntHealthandDental;
-        
+
         /// <summary>
         /// litHealthAndDentalInternational control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litHealthAndDentalInternational;
-        
+
         /// <summary>
         /// plcStudentAssociationFee control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcStudentAssociationFee;
-        
+
         /// <summary>
         /// litStudentAssociationFeeDomestic control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litStudentAssociationFeeDomestic;
-        
+
         /// <summary>
         /// plcColIntStudentAssociation control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntStudentAssociation;
-        
+
         /// <summary>
         /// litStudentAssociationFeeInternational control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litStudentAssociationFeeInternational;
-        
+
         /// <summary>
         /// plcUPass control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcUPass;
-        
+
         /// <summary>
         /// litUPassDomestic control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litUPassDomestic;
-        
+
         /// <summary>
         /// plcColIntUPass control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntUPass;
-        
+
         /// <summary>
         /// litUPassInternational control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litUPassInternational;
-        
+
         /// <summary>
         /// plcParkingPass control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcParkingPass;
-        
+
         /// <summary>
         /// litParkingPassDomestic control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litParkingPassDomestic;
-        
+
         /// <summary>
         /// plcColIntParkingPass control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntParkingPass;
-        
+
         /// <summary>
         /// litParkingPassInternational control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litParkingPassInternational;
-        
+
         /// <summary>
         /// plcInternationalStudentFee control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcInternationalStudentFee;
-        
+
         /// <summary>
         /// litInternationalStudentFeeInternational control.
         /// </summary>
@@ -299,7 +301,43 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litInternationalStudentFeeInternational;
-        
+
+        /// <summary>
+        /// plcVirtualHealthcare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcVirtualHealthcare;
+
+        /// <summary>
+        /// litVirtualHealthcare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litVirtualHealthcare;
+
+        /// <summary>
+        /// plcColIntVirtualHealthcare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder plcColIntVirtualHealthcare;
+
+        /// <summary>
+        /// litVirtualHealthcareInternational control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litVirtualHealthcareInternational;
+
         /// <summary>
         /// litTotalDomestic control.
         /// </summary>
@@ -308,7 +346,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTotalDomestic;
-        
+
         /// <summary>
         /// plcColDomTotal control.
         /// </summary>
@@ -317,7 +355,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColDomTotal;
-        
+
         /// <summary>
         /// litTotalInternational control.
         /// </summary>
@@ -326,7 +364,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTotalInternational;
-        
+
         /// <summary>
         /// litPaymentFirstTermDomestic control.
         /// </summary>
@@ -335,7 +373,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPaymentFirstTermDomestic;
-        
+
         /// <summary>
         /// plcColIntTotal control.
         /// </summary>
@@ -344,7 +382,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntTotal;
-        
+
         /// <summary>
         /// litPaymentFirstTermInternational control.
         /// </summary>
@@ -353,7 +391,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPaymentFirstTermInternational;
-        
+
         /// <summary>
         /// plcNotesPayment control.
         /// </summary>
@@ -362,7 +400,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcNotesPayment;
-        
+
         /// <summary>
         /// litNotesPayment control.
         /// </summary>
@@ -371,7 +409,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesPayment;
-        
+
         /// <summary>
         /// plcNotesTuition control.
         /// </summary>
@@ -380,7 +418,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcNotesTuition;
-        
+
         /// <summary>
         /// litNotesTuition control.
         /// </summary>
@@ -389,7 +427,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesTuition;
-        
+
         /// <summary>
         /// plcCoop control.
         /// </summary>
@@ -398,7 +436,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcCoop;
-        
+
         /// <summary>
         /// plcColCoop control.
         /// </summary>
@@ -407,7 +445,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColCoop;
-        
+
         /// <summary>
         /// litCoop control.
         /// </summary>
@@ -416,7 +454,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litCoop;
-        
+
         /// <summary>
         /// litCoopDomestic control.
         /// </summary>
@@ -425,7 +463,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litCoopDomestic;
-        
+
         /// <summary>
         /// plcColIntCoop control.
         /// </summary>
@@ -434,7 +472,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntCoop;
-        
+
         /// <summary>
         /// litCoopInternational control.
         /// </summary>
@@ -443,7 +481,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litCoopInternational;
-        
+
         /// <summary>
         /// plcNotesCoop control.
         /// </summary>
@@ -452,7 +490,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcNotesCoop;
-        
+
         /// <summary>
         /// litNotesCoop control.
         /// </summary>
@@ -461,7 +499,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesCoop;
-        
+
         /// <summary>
         /// plcTextbooks control.
         /// </summary>
@@ -470,7 +508,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcTextbooks;
-        
+
         /// <summary>
         /// plcColTextbooks control.
         /// </summary>
@@ -479,7 +517,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColTextbooks;
-        
+
         /// <summary>
         /// litTextbooksDomestic control.
         /// </summary>
@@ -488,7 +526,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTextbooksDomestic;
-        
+
         /// <summary>
         /// plcColIntTextbooks control.
         /// </summary>
@@ -497,7 +535,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntTextbooks;
-        
+
         /// <summary>
         /// litTextbooksInternational control.
         /// </summary>
@@ -506,7 +544,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTextbooksInternational;
-        
+
         /// <summary>
         /// plcNotesTextbooks control.
         /// </summary>
@@ -515,7 +553,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcNotesTextbooks;
-        
+
         /// <summary>
         /// litNotesTextbooks control.
         /// </summary>
@@ -524,7 +562,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesTextbooks;
-        
+
         /// <summary>
         /// plcSupplies control.
         /// </summary>
@@ -533,7 +571,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcSupplies;
-        
+
         /// <summary>
         /// plcColSupplies control.
         /// </summary>
@@ -542,7 +580,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColSupplies;
-        
+
         /// <summary>
         /// litSuppliesDomestic control.
         /// </summary>
@@ -551,7 +589,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litSuppliesDomestic;
-        
+
         /// <summary>
         /// plcColIntSupplies control.
         /// </summary>
@@ -560,7 +598,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntSupplies;
-        
+
         /// <summary>
         /// litSuppliesInternational control.
         /// </summary>
@@ -569,7 +607,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litSuppliesInternational;
-        
+
         /// <summary>
         /// plcCostItems control.
         /// </summary>
@@ -578,7 +616,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcCostItems;
-        
+
         /// <summary>
         /// rptCostItems control.
         /// </summary>
@@ -587,7 +625,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptCostItems;
-        
+
         /// <summary>
         /// plcNotesCostItems control.
         /// </summary>
@@ -596,7 +634,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcNotesCostItems;
-        
+
         /// <summary>
         /// litNotesCostItems control.
         /// </summary>
@@ -605,7 +643,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesCostItems;
-        
+
         /// <summary>
         /// plcColTotalCost control.
         /// </summary>
@@ -614,7 +652,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColTotalCost;
-        
+
         /// <summary>
         /// litTotalCostDomestic control.
         /// </summary>
@@ -623,7 +661,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTotalCostDomestic;
-        
+
         /// <summary>
         /// plcColIntTotalCost control.
         /// </summary>
@@ -632,7 +670,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcColIntTotalCost;
-        
+
         /// <summary>
         /// litTotalCostInternational control.
         /// </summary>
@@ -641,7 +679,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litTotalCostInternational;
-        
+
         /// <summary>
         /// plcSchedules control.
         /// </summary>
@@ -650,7 +688,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcSchedules;
-        
+
         /// <summary>
         /// lnkAcademicCalendar control.
         /// </summary>
@@ -659,7 +697,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkAcademicCalendar;
-        
+
         /// <summary>
         /// rptSchedules control.
         /// </summary>
@@ -668,7 +706,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptSchedules;
-        
+
         /// <summary>
         /// plcNotesSchedule control.
         /// </summary>
@@ -677,7 +715,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder plcNotesSchedule;
-        
+
         /// <summary>
         /// litNotesSchedule control.
         /// </summary>
@@ -686,7 +724,7 @@ namespace NSCC.Fees.Web.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNotesSchedule;
-        
+
         /// <summary>
         /// plcNotFound control.
         /// </summary>
