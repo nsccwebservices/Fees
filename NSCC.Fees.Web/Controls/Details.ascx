@@ -74,7 +74,7 @@
 
     <asp:PlaceHolder runat="server" ID="plcVirtualHealthcare" Visible="false">
     <tr>
-        <td>Virtual Health Care fee<span class="virtualhealthcare-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="virtualhealthcare-info-tooltip tooltip-info">This fee applies to all full- and part-time students in eligible programs, unless an opt out has been completed. For more information, visit virtual health care.</span></td>
+        <td>Virtual health care fee<span class="virtualhealthcare-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="virtualhealthcare-info-tooltip tooltip-info">This fee applies to all full- and part-time students in eligible programs, unless an opt out has been completed. For more information, visit virtual health care.</span></td>
         <td><asp:Literal runat="server" ID="litVirtualHealthcare" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntVirtualHealthcare" Visible="false"><td><asp:Literal runat="server" ID="litVirtualHealthcareInternational" /></td></asp:PlaceHolder>
     </tr>
