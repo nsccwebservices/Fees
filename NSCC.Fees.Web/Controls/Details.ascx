@@ -198,8 +198,9 @@
         </table>
     </FooterTemplate>
 </asp:Repeater>
-<div class="fees-indented">These are estimated costs for items required for your program. If you already have any of these items, they may meet your program requirements.</div>
-</asp:PlaceHolder>
+<div class="fees-indented">These are estimated costs for items required for your program. If you already have any of these items, they may meet your program requirements.
+<p>The technology requirements listed above are an estimate that reflects the need for students to have their own computer and technology accessories. <a href="../../../admissions/applying/program-requirements/program-technology-requirements.asp">View technology requirement details</a></p>
+</div></asp:PlaceHolder>
 
 <asp:PlaceHolder runat="server" ID="plcNotesCostItems" Visible="false">
 <div class="fees-notes">
