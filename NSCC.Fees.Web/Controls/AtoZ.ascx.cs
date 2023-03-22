@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Config = NSCC.Fees.Web.Properties.Settings;
@@ -10,18 +7,19 @@ using NSCC.Fees.Business;
 using NSCC.Fees.Business.Classes;
 using NSCC.Fees.Data;
 
-
+using NSCC.ExceptionManagement.Business;
 using NLog;
 
 namespace NSCC.Fees.Web.Controls
 {
     public partial class AtoZ : System.Web.UI.UserControl
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        //private static Logger logger = LogManager.GetCurrentClassLogger();
+        private FeesRepository _repository = null;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -31,11 +29,11 @@ namespace NSCC.Fees.Web.Controls
                 return;
             }
 
-            var repository = new FeesRepository(new FeesEntities());
+            _repository = new FeesRepository(new FeesEntities());
 
             try
             {
-                var programFees = repository.GetPrograms(Config.Default.AcademicYear, false); //don't include unpublished Program fee data;
+                var programFees = _repository.GetPrograms(Config.Default.AcademicYear, false); //don't include unpublished Program fee data;
 
                 var lst = programFees.GroupBy(x => x.Name.Substring(0, 1).ToUpper(), (alphabet, programs) => new AlphaCount { Alphabet = alphabet, Programs = programs.OrderBy(x => x.Name).ToList() })
                     .OrderBy(x => x.Alphabet);
@@ -52,13 +50,17 @@ namespace NSCC.Fees.Web.Controls
                     litAcademicYear.Text = String.Format(litAcademicYear.Text, program.AcademicYear.Name);
                 }
             }
+            catch (System.Data.Entity.Core.EntityException ex) //database likely unreachable
+            {
+                NSCCExceptionLogger.LogException(System.Reflection.MethodBase.GetCurrentMethod().Name, ex, Severity.HIGH, "Fees");
+            }
             catch (Exception ex)
             {
-                LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
+                NSCCExceptionLogger.LogException(System.Reflection.MethodBase.GetCurrentMethod().Name, ex, Severity.LOW, "Fees");
             }
             finally
             {
-                repository.Dispose();
+                _repository.Dispose();
             }
 
         }
@@ -77,9 +79,9 @@ namespace NSCC.Fees.Web.Controls
             }
         }
 
-        private void LogError(string method, Exception e)
-        {
-            logger.Error("Method: {0} - {1} - {2}: ", String.Format("{0}.{1}()", this.GetType().FullName, method), e.Message, e.StackTrace);
-        }
+        //private void LogError(string method, Exception e)
+        //{
+        //    logger.Error("Method: {0} - {1} - {2}: ", String.Format("{0}.{1}()", this.GetType().FullName, method), e.Message, e.StackTrace);
+        //}
     }
 }

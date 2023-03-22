@@ -53,6 +53,14 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.7.7\lib\net45\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="NSCC.ExceptionManagement.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b95702835573b0b2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ExceptionManagement\NSCC.ExceptionManagement.Business\bin\Debug\NSCC.ExceptionManagement.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="NSCC.ExceptionManagement.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a9367724abba12be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ExceptionManagement\NSCC.ExceptionManagement.Business\bin\Debug\NSCC.ExceptionManagement.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
@@ -76,6 +84,7 @@
   <ItemGroup>
     <Content Include="Controls\Details.ascx" />
     <Content Include="Controls\AtoZ.ascx" />
+    <Content Include="EmailTemplates\ErrorNotification.html" />
     <Content Include="Program.aspx" />
     <Content Include="Default.aspx" />
     <None Include="index.html" />

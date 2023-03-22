@@ -246,9 +246,9 @@
     <ItemTemplate>
         <tr>
             <td><%# ((Schedule)Container.DataItem).Location.ShortName %></td>
-            <td><%# ((Schedule)Container.DataItem).StartDate.Value.ToString("MMM d, yyyy") %></td>
-            <td><%# ((Schedule)Container.DataItem).AcademicYearEndDate.Value.ToString("MMM d, yyyy") %></td>
-            <td><%# ((Schedule)Container.DataItem).ProgramEndDate.Value.ToString("MMM d, yyyy") %></td>
+            <td><%# ((Schedule)Container.DataItem).StartDate.HasValue ? ((Schedule)Container.DataItem).StartDate.Value.ToString("MMM d, yyyy") : "" %></td>
+            <td><%# ((Schedule)Container.DataItem).AcademicYearEndDate.HasValue ? ((Schedule)Container.DataItem).AcademicYearEndDate.Value.ToString("MMM d, yyyy") : "" %></td>
+            <td><%# ((Schedule)Container.DataItem).ProgramEndDate.HasValue ? ((Schedule)Container.DataItem).ProgramEndDate.Value.ToString("MMM d, yyyy") : "" %></td>
             <td><%# ((Schedule)Container.DataItem).FirstPaymentDate.HasValue ? ((Schedule)Container.DataItem).FirstPaymentDate.Value.ToString("MMM d, yyyy") : "" %></td>
             <td><%# ((Schedule)Container.DataItem).HasUPass ? "Yes" : "No" %></td>
         </tr>
