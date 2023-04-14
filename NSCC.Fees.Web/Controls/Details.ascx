@@ -15,7 +15,7 @@
 <div>
 <asp:PlaceHolder runat="server" ID="plcProgramPageLink" Visible="false">For details about this program visit the <a runat="server" id="lnkProgramPage">program page</a>.</asp:PlaceHolder><asp:PlaceHolder runat="server" ID="plcInternationalText" Visible="false"> International students are not eligible for this program.</asp:PlaceHolder>
 </div>
-
+<h2>Tuition, fees and program costs</h2> 
 <table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
