@@ -38,28 +38,28 @@
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcHealthAndDental" Visible="false">
     <tr>
-        <td>Student health and dental benefits<span class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to all International and/or full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/tuition-fees-and-costs/health-and-dental-benefits.asp">student health and dental plan</a>.</span></td>
+        <td>Student health and dental benefits<div class="health-dental-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="health-dental-info-tooltip tooltip-info">This fee applies to all International and/or full-time students in eligible programs - unless proof of comparable coverage is provided. For more information, visit <a href="/admissions/tuition-fees-and-costs/health-and-dental-benefits.asp">student health and dental plan</a>.</div></td>
         <td><asp:Literal runat="server" ID="litHealthAndDentalDomestic" /></td>
        <asp:PlaceHolder runat="server" ID="plcColIntHealthandDental" Visible="false"><td><asp:Literal runat="server" ID="litHealthAndDentalInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcStudentAssociationFee" Visible="false">
     <tr>
-        <td>Student Association fee<span class="sa-fee-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/tuition-fees-and-costs/safees.asp">campus Student Association fees</a>.</span></td>
+        <td>Student Association fee<div class="sa-fee-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="sa-fee-info-tooltip tooltip-info">This fee varies by campus. To check your exact amount, view <a href="/admissions/tuition-fees-and-costs/safees.asp">campus Student Association fees</a>.</div></td>
         <td><asp:Literal runat="server" ID="litStudentAssociationFeeDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntStudentAssociation" Visible="false"><td><asp:Literal runat="server" ID="litStudentAssociationFeeInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcUPass" Visible="false">
     <tr>
-        <td>U-Pass<span class="upass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="upass-info-tooltip tooltip-info">The U-Pass fee applies to full-time students at Akerley, Institute of Technology and Ivany campuses, and is optional for eCampus students.</span></td>
+        <td>U-Pass<div class="upass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="upass-info-tooltip tooltip-info">The U-Pass fee applies to full-time students at Akerley, Institute of Technology and Ivany campuses, and is optional for eCampus students.</div></td>
         <td><asp:Literal runat="server" ID="litUPassDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntUPass" Visible="false"><td><asp:Literal runat="server" ID="litUPassInternational" /></td></asp:PlaceHolder>
     </tr>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="plcParkingPass" Visible="false">
     <tr>
-        <td>Parking pass<span class="parkingpass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="parkingpass-info-tooltip tooltip-info">This fee applies only if parking on NSCC property. If a parking pass isn't required, deduct this fee from your total.</span></td>
+        <td>Parking pass<div class="parkingpass-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="parkingpass-info-tooltip tooltip-info">This fee applies only if parking on NSCC property. If a parking pass isn't required, deduct this fee from your total.</div></td>
         <td><asp:Literal runat="server" ID="litParkingPassDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntParkingPass" Visible="false"><td><asp:Literal runat="server" ID="litParkingPassInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -74,7 +74,7 @@
 
     <asp:PlaceHolder runat="server" ID="plcVirtualHealthcare" Visible="false">
     <tr>
-        <td>Virtual health care fee<span class="virtualhealthcare-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="virtualhealthcare-info-tooltip tooltip-info">This fee applies to all full- and part-time students in eligible programs, unless an opt out has been completed. For more information, visit <a href="/admissions/tuition-fees-and-costs/health-and-dental-benefits.asp#vhc">virtual health care</a>.</span></td>
+        <td>Virtual health care fee<div class="virtualhealthcare-info tooltip-icon"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="virtualhealthcare-info-tooltip tooltip-info">This fee applies to all full- and part-time students in eligible programs, unless an opt out has been completed. For more information, visit <a href="/admissions/tuition-fees-and-costs/health-and-dental-benefits.asp#vhc">virtual health care</a>.</div></td>
         <td><asp:Literal runat="server" ID="litVirtualHealthcare" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntVirtualHealthcare" Visible="false"><td><asp:Literal runat="server" ID="litVirtualHealthcareInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -87,7 +87,7 @@
         <asp:PlaceHolder runat="server" ID="plcColDomTotal" Visible="false"><td><asp:Literal runat="server" ID="litTotalInternational" /></td></asp:PlaceHolder>
     </tr>
     <tr class="fees-total-row">
-        <td>Payment (1st term)<span class="paymentfirstterm-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="paymentfirstterm-info-tooltip tooltip-info">If you paid a non-refundable tuition deposit, subtract it from this total.</span></td>
+        <td>Payment (1st term)<div class="paymentfirstterm-info tooltip-icon qtip-linebreak"><span class="fa-stack" aria-hidden="true"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="paymentfirstterm-info-tooltip tooltip-info">If you paid a non-refundable tuition deposit, subtract it from this total.</div></td>
         <td><asp:Literal runat="server" ID="litPaymentFirstTermDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntTotal" Visible="false"><td><asp:Literal runat="server" ID="litPaymentFirstTermInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -273,17 +273,16 @@
 
 <!-- Google CSE Search Box Begins  -->
   <script>
-   window.onload = function()
-   { 
-   // header search box
-   var searchBoxHdr =  document.getElementById("gsc-i-id1");
-   searchBoxHdr.placeholder="Search nscc.ca";
-   searchBoxHdr.title="Search nscc.ca";
-   // search page search box
-   var searchBox =  document.getElementById("gsc-i-id2");
-   searchBox.placeholder="Search nscc.ca";
-   searchBox.title="Search nscc.ca";
-   }
+      window.onload = function () {
+          // header search box
+          var searchBoxHdr = document.getElementById("gsc-i-id1");
+          searchBoxHdr.placeholder = "Search nscc.ca";
+          searchBoxHdr.title = "Search nscc.ca";
+          // search page search box
+          var searchBox = document.getElementById("gsc-i-id2");
+          searchBox.placeholder = "Search nscc.ca";
+          searchBox.title = "Search nscc.ca";
+      }
   </script>
 <div id="search-box">
     <div class="gcse-searchbox-only" data-resultsUrl="/search/index.asp"></div>
