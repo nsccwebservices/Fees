@@ -23,8 +23,10 @@ namespace NSCC.Fees.Data
         public Nullable<System.DateTime> AcademicYearEndDate { get; set; }
         public bool HasUPass { get; set; }
         public bool IsPublished { get; set; }
+        public int DeliveryID { get; set; }
     
         public virtual Location Location { get; set; }
         public virtual Program Program { get; set; }
+        public virtual Delivery Delivery { get; set; }
     }
 }

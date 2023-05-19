@@ -61,6 +61,9 @@
     <Compile Include="CostItem.cs">
       <DependentUpon>FeesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Delivery.cs">
+      <DependentUpon>FeesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FeesEntities.cs" />
     <Compile Include="FeesModel.Context.cs">
       <AutoGen>True</AutoGen>

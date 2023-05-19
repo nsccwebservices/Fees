@@ -235,6 +235,7 @@
         <thead>
         <tr>
             <th>Campus</th>
+            <th><a href="/study-at-nscc/learning-experience/ways-to-learn/index.asp">Delivery</a></th>
             <th>Start date</th>
             <th>Academic year end date</th>
             <th>Program end date</th>
@@ -246,6 +247,16 @@
     <ItemTemplate>
         <tr>
             <td><%# ((Schedule)Container.DataItem).Location.ShortName %></td>
+            <td>
+                <%# ((Schedule)Container.DataItem).Delivery.Name %>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_ASYNCHRONOUS_ONLINE %>"><div class="online-delivery-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="online-delivery-info-tooltip tooltip-info">Delivered fully online with no scheduled classes.</div></asp:PlaceHolder>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_BLENDED %>"><span class="blended-delivery-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="blended-delivery-info-tooltip tooltip-info">Delivered through a combination of online and in-person classes. At least 50% of learning is in-person.</span></asp:PlaceHolder>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_BLENDED_DISTRIBUTED %>"><div class="blended-distributed-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="blended-distributed-info-tooltip tooltip-info">Delivered through a combination of online and in-person classes. In-person classes are delivered at one location and virtually to students at another location. At least 50% of learning is in-person.</div></asp:PlaceHolder>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_BLENDED_FLEX %>"><div class="blended-flex-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="blended-flex-info-tooltip tooltip-info">Delivered through a combination of online and in-person classes.  Less than 50% of learning occurs in-person.</div></asp:PlaceHolder>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_DISTRIBUTED %>"><span class="dist-delivery-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="dist-delivery-info-tooltip tooltip-info">Delivered in-person at one location and virtually to students at another location.</span></asp:PlaceHolder>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_IN_PERSON %>"><div class="in-class-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="in-class-info-tooltip tooltip-info">Delivered in-person. Some courses may have online elements.</div></asp:PlaceHolder>
+                <asp:PlaceHolder runat="server" Visible="<%# ((Schedule)Container.DataItem).Delivery.DeliveryID == NSCC.Fees.Web.Classes.Constants.DELIVERY_SYNCHRONOUS_ONLINE %>"><div class="scheduled-delivery-info tooltip-icon"><span class="fa-stack"><span class="fa fa-circle fa-stack-1x icon-bg-white"></span><span class="fa fa-info-circle fa-stack-1x"></span></span></span><span class="scheduled-delivery-info-tooltip tooltip-info">Delivered fully online with both non-scheduled and scheduled classes.</div></asp:PlaceHolder>
+            </td>
             <td><%# ((Schedule)Container.DataItem).StartDate.HasValue ? ((Schedule)Container.DataItem).StartDate.Value.ToString("MMM d, yyyy") : "" %></td>
             <td><%# ((Schedule)Container.DataItem).AcademicYearEndDate.HasValue ? ((Schedule)Container.DataItem).AcademicYearEndDate.Value.ToString("MMM d, yyyy") : "" %></td>
             <td><%# ((Schedule)Container.DataItem).ProgramEndDate.HasValue ? ((Schedule)Container.DataItem).ProgramEndDate.Value.ToString("MMM d, yyyy") : "" %></td>

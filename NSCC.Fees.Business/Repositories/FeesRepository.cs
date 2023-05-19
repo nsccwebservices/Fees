@@ -320,6 +320,21 @@ namespace NSCC.Fees.Business
 
         #endregion
 
+        #region "Deliveries"
+        public IEnumerable<Delivery> GetDeliveries()
+        {
+            try
+            {
+                var deliveries = _context.Deliveries;
+                return deliveries.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion 
+
         #region "Locations"
         public IEnumerable<Location> GetLocations()
         {
@@ -333,6 +348,8 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
+
+
         public IEnumerable<Location> GetMetroCampuses()
         {
             try

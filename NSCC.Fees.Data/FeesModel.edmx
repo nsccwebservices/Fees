@@ -38,6 +38,13 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DeliveryID" />
+          </Key>
+          <Property Name="DeliveryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Location">
           <Key>
             <PropertyRef Name="LocationID" />
@@ -99,6 +106,7 @@
           <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProgramID" Type="int" Nullable="false" />
           <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="DeliveryID" Type="int" Nullable="false" />
           <Property Name="FirstPaymentDate" Type="datetime" />
           <Property Name="ProgramEndDate" Type="datetime" />
           <Property Name="StartDate" Type="datetime" />
@@ -209,6 +217,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Schedule_Delivery">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="DeliveryID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="DeliveryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Schedule_Location">
           <End Role="Location" Type="Self.Location" Multiplicity="1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
@@ -252,6 +272,7 @@
           <EntitySet Name="AcademicYear" EntityType="Self.AcademicYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CollegeFee" EntityType="Self.CollegeFee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CostItem" EntityType="Self.CostItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramCollegeFee" EntityType="Self.ProgramCollegeFee" Schema="dbo" store:Type="Tables" />
@@ -285,6 +306,10 @@
           <AssociationSet Name="FK_ProgramCollegeFee_Program" Association="Self.FK_ProgramCollegeFee_Program">
             <End Role="Program" EntitySet="Program" />
             <End Role="ProgramCollegeFee" EntitySet="ProgramCollegeFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Delivery" Association="Self.FK_Schedule_Delivery">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Schedule_Location" Association="Self.FK_Schedule_Location">
             <End Role="Location" EntitySet="Location" />
@@ -350,6 +375,11 @@
           <AssociationSet Name="ProgramCollegeFee" Association="FeesModel.ProgramCollegeFee">
             <End Role="CollegeFee" EntitySet="CollegeFees" />
             <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <EntitySet Name="Deliveries" EntityType="FeesModel.Delivery" />
+          <AssociationSet Name="FK_Schedule_Delivery" Association="FeesModel.FK_Schedule_Delivery">
+            <End Role="Delivery" EntitySet="Deliveries" />
+            <End Role="Schedule" EntitySet="Schedules" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetSchedulesByAcademicYear_Result">
@@ -472,6 +502,8 @@
           <Property Name="IsPublished" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Location" Relationship="FeesModel.FK_Schedule_Location" FromRole="Schedule" ToRole="Location" />
           <NavigationProperty Name="Program" Relationship="FeesModel.FK_Schedule_Program" FromRole="Schedule" ToRole="Program" />
+          <Property Name="DeliveryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Delivery" Relationship="FeesModel.FK_Schedule_Delivery" FromRole="Schedule" ToRole="Delivery" />
         </EntityType>
         <EntityType Name="School">
           <Key>
@@ -595,6 +627,26 @@
           <End Type="FeesModel.CollegeFee" Role="CollegeFee" Multiplicity="*" />
           <End Type="FeesModel.Program" Role="Program" Multiplicity="*" />
         </Association>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DeliveryID" />
+          </Key>
+          <Property Name="DeliveryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Schedules" Relationship="FeesModel.FK_Schedule_Delivery" FromRole="Delivery" ToRole="Schedule" />
+        </EntityType>
+        <Association Name="FK_Schedule_Delivery">
+          <End Type="FeesModel.Delivery" Role="Delivery" Multiplicity="1" />
+          <End Type="FeesModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="DeliveryID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="DeliveryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -690,6 +742,7 @@
           <EntitySetMapping Name="Schedules">
             <EntityTypeMapping TypeName="FeesModel.Schedule">
               <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
                 <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="HasUPass" ColumnName="HasUPass" />
                 <ScalarProperty Name="AcademicYearEndDate" ColumnName="AcademicYearEndDate" />
@@ -731,6 +784,14 @@
               <ScalarProperty Name="CollegeFeeID" ColumnName="CollegeFeeID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="FeesModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

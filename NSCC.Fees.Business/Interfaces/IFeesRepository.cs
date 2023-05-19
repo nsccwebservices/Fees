@@ -55,6 +55,7 @@ namespace NSCC.Fees.Business
         void DeleteTuition(int tuitionID);
 
         IEnumerable<Location> GetLocations();
+        IEnumerable<Delivery> GetDeliveries();
         IEnumerable<Location> GetMetroCampuses();
         IEnumerable<School> GetSchools();
 

@@ -22,6 +22,8 @@
         <AssociationConnector Association="FeesModel.FK_Program_Tuition" />
         <AssociationConnector Association="FeesModel.FK_Schedule_Program" />
         <AssociationConnector Association="FeesModel.ProgramCollegeFee" />
+        <EntityTypeShape EntityType="FeesModel.Delivery" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="FeesModel.FK_Schedule_Delivery" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

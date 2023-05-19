@@ -35,6 +35,7 @@ namespace NSCC.Fees.Data
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<Tuition> Tuitions { get; set; }
+        public virtual DbSet<Delivery> Deliveries { get; set; }
     
         public virtual ObjectResult<Schedule> GetSchedulesByAcademicYear(Nullable<int> academicYearID)
         {
