@@ -240,7 +240,7 @@
             <th>Academic year end date</th>
             <th>Program end date</th>
             <th>Payment due (1st term)</th>
-            <th>U-Pass fee</th>
+            <th class="fees-upass">U-Pass fee</th>
         </tr>
         </thead>
     </HeaderTemplate>
