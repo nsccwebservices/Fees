@@ -6,7 +6,7 @@
 <asp:PlaceHolder runat="server" ID="plcFound">
 
 
-<h1><asp:Label ID="lblProgramFees" Runat="server" Text="{0} Estimated Fees"></asp:Label><br /><span id="lblProgram"><asp:Label ID="lblTitle" Runat="server"></asp:Label></span></h1>
+<h1><asp:Label ID="lblProgramFees" Runat="server" Text="{0} Estimated Fees"></asp:Label><br /><span id="lblTitle"><asp:Label ID="lblProgramName" Runat="server"></asp:Label></span></h1>
 
 
 

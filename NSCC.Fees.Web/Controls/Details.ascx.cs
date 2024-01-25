@@ -71,7 +71,7 @@ namespace NSCC.Fees.Web.Controls
                     //metadata - title
                     Page.Title = String.Concat(WebUtility.HtmlDecode(_program.Name), " | Fees | NSCC");
 
-                    lblTitle.Text = _program.Name;
+                    lblProgramName.Text = _program.Name;
                     lblProgramFees.Text = String.Format(lblProgramFees.Text, _program.AcademicYear.Name);
 
                     litTuitionDomestic.Text = _program.Tuition.LookupName == Business.Constants.NON_STANDARD_TUITION ? (_program.NonStandardTuitionDomestic ?? 0).ToString(Business.Constants.CURRENCY_FORMAT) : _program.Tuition.AmountDomestic.ToString(Business.Constants.CURRENCY_FORMAT);
