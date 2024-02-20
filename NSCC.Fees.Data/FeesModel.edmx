@@ -265,6 +265,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetCostItemsByAcademicYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AcademicYearID" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetSchedulesByAcademicYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AcademicYearID" Type="int" Mode="In" />
         </Function>
@@ -381,6 +384,9 @@
             <End Role="Delivery" EntitySet="Deliveries" />
             <End Role="Schedule" EntitySet="Schedules" />
           </AssociationSet>
+          <FunctionImport Name="GetCostItemsByAcademicYear" EntitySet="CostItems" ReturnType="Collection(FeesModel.CostItem)">
+          <Parameter Name="AcademicYearID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetSchedulesByAcademicYear_Result">
           <Property Type="Int32" Name="ScheduleID" Nullable="false" />
@@ -647,6 +653,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetCostItemsByAcademicYear_Result">
+          <Property Type="String" Name="ProgramName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="CostItem" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="Cost" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -792,6 +803,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCostItemsByAcademicYear" FunctionName="FeesModel.Store.GetCostItemsByAcademicYear">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

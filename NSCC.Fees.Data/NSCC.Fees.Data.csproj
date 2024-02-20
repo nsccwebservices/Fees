@@ -80,6 +80,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FeesModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GetCostItemsByAcademicYear_Result.cs">
+      <DependentUpon>FeesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetSchedulesByAcademicYear_Result.cs">
       <DependentUpon>FeesModel.tt</DependentUpon>
     </Compile>

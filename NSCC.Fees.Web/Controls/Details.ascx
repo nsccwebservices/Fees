@@ -210,7 +210,7 @@
 
 
 
-<table class="tablesaw tablesaw-stack fees-3c">
+<table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
         <th>Total Cost</th>

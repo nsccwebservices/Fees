@@ -28,6 +28,8 @@ namespace NSCC.Fees.Business
         IEnumerable<Schedule> GetSchedules();
         IEnumerable<Schedule> GetSchedules(int programID);
         IEnumerable<Schedule> GetSchedulesByAcademicYear(int acadyear);
+
+        IEnumerable<CostItem> GetCostItemsByAcademicYear(int acadyear);
         Schedule GetSchedule(int scheduleID);
         void AddSchedule(Schedule sch);
         void DeleteSchedule(int scheduleID);

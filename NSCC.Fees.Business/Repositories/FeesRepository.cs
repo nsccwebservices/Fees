@@ -222,7 +222,21 @@ namespace NSCC.Fees.Business
                 throw;
             }
         }
-
+        //IEnumerable<CostItem> GetCostItemsByAcademicYear(int acadyear);
+        public IEnumerable<CostItem> GetCostItemsByAcademicYear(int acadyear)
+        {
+            try
+            {
+                var costitems = _context.GetCostItemsByAcademicYear(acadyear);
+                return costitems;
+                // var program = GetProgram(programID);
+                //  return program.Schedules.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public Schedule GetSchedule(int scheduleID)
         {
             try

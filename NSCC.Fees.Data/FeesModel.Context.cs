@@ -54,5 +54,23 @@ namespace NSCC.Fees.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Schedule>("GetSchedulesByAcademicYear", mergeOption, academicYearIDParameter);
         }
+    
+        public virtual ObjectResult<CostItem> GetCostItemsByAcademicYear(Nullable<int> academicYearID)
+        {
+            var academicYearIDParameter = academicYearID.HasValue ?
+                new ObjectParameter("AcademicYearID", academicYearID) :
+                new ObjectParameter("AcademicYearID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CostItem>("GetCostItemsByAcademicYear", academicYearIDParameter);
+        }
+    
+        public virtual ObjectResult<CostItem> GetCostItemsByAcademicYear(Nullable<int> academicYearID, MergeOption mergeOption)
+        {
+            var academicYearIDParameter = academicYearID.HasValue ?
+                new ObjectParameter("AcademicYearID", academicYearID) :
+                new ObjectParameter("AcademicYearID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CostItem>("GetCostItemsByAcademicYear", mergeOption, academicYearIDParameter);
+        }
     }
 }
