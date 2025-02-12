@@ -235,7 +235,7 @@
         <thead>
         <tr>
             <th>Campus</th>
-            <th><a href="/study-at-nscc/learning-experience/ways-to-learn/index.asp">Delivery</a></th>
+            <th><a href="https://www.nscc.ca/waystolearn">Delivery</a></th>
             <th>Start date</th>
             <th>Academic year end date</th>
             <th>Program end date</th>
