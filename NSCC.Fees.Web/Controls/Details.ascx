@@ -159,13 +159,13 @@
 <table class="tablesaw tablesaw-stack fees-3c fees-no-notes" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <th>Classroom/Portfolio Supplies</th>
+        <th>Classroom/portfolio Supplies</th>
         <th>Domestic amount</th>
         <asp:PlaceHolder runat="server" ID="plcColSupplies" Visible="false"><th>International amount</th></asp:PlaceHolder>
     </tr>
     </thead>
     <tr>
-        <td>Classroom/Portfolio Supplies</td>
+        <td>Classroom/portfolio Supplies</td>
         <td><asp:Literal runat="server" ID="litSuppliesDomestic" /></td>
         <asp:PlaceHolder runat="server" ID="plcColIntSupplies" Visible="false"><td><asp:Literal runat="server" ID="litSuppliesInternational" /></td></asp:PlaceHolder>
     </tr>
@@ -213,7 +213,7 @@
 <table class="tablesaw tablesaw-stack fees-3c" data-tablesaw-mode="stack">
     <thead>
     <tr>
-        <th>Total Cost</th>
+        <th>Total cost</th>
         <th>Domestic total</th>
         <asp:PlaceHolder runat="server" ID="plcColTotalCost" Visible="false"><th>International total</th></asp:PlaceHolder>
     </tr>
